@@ -1,24 +1,41 @@
-import logo from './logo.svg';
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 import './App.css';
+import React, { useEffect, useState } from 'react';
 
 function App() {
+
+
+  const [lat, setLat] = useState();
+  const [lon, setLon] = useState();
+
+  const [errors, setErrors] = useState([]);
+
+  const apiKey = process.env.REACT_APP_API_KEY;
+  const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly&appid=${apiKey}`
+
+  //get location via browser geolocation
+  useEffect(() => {
+    if (!navigator.geolocation) {
+      setErrors(errors => [...errors, "Location not supported"]);
+    } else {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          setLat(position.coords.latitude);
+          setLon(position.coords.longitude);
+        });
+
+      console.log("Latitude is: ", lat)
+      console.log("Longitude is: ", lon)
+    }
+
+    
+  }, [lat, lon]);
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>yo</p>
+      <p>lat: {lat}</p>
+      <p>lon: {lon}</p>
     </div>
   );
 }

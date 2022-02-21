@@ -1,12 +1,14 @@
 import 'mdb-react-ui-kit/dist/css/mdb.min.css'
 import './App.css';
 import React, { useEffect, useState } from 'react';
+import CurrentWeather from './CurrentWeather';
 
 function App() {
 
 
   const [lat, setLat] = useState();
   const [lon, setLon] = useState();
+  const [city, setCity] = useState();
   const [forecast, setForecast] = useState([]);
 
   const [errors, setErrors] = useState([]);
@@ -27,16 +29,22 @@ const controller = new AbortController();
           setLon(position.coords.longitude);
         });
 
+        // await fetch(`${process.env.REACT_APP_CITY_URL}?lat=${lat}&lon=${lon}&limit=1&appid=${process.env.REACT_APP_API_KEY}`)
+        //   .then(res=>res.json())
+        //   .then(result => {
+        //     setCity(result.name)
+        //     console.log(city)
+        //   })
+
       // console.log("Latitude is: ", lat)
       // console.log("Longitude is: ", lon)
       }
-      await fetch(`${process.env.REACT_APP_API_URL}?lat=${lat}&lon=${lon}&units=imperial&APPID=${process.env.REACT_APP_API_KEY}`)
+       fetch(`${process.env.REACT_APP_API_URL}?lat=${lat}&lon=${lon}&units=imperial&APPID=${process.env.REACT_APP_API_KEY}`)
         .then(res=>res.json())
         .then(result => {
           setForecast(result)
           console.log(result)
           console.log(`${process.env.REACT_APP_API_URL}?lat=${lat}&lon=${lon}$units=imperial&APPID=${process.env.REACT_API_KEY}`)
-
         })
       .catch((err) => {
         if (err.name === 'AbortError') {
@@ -57,9 +65,14 @@ const controller = new AbortController();
 
   return (
     <div className="App">
-      <p>yo</p>
-      <p>lat: {lat}</p>
-      <p>lon: {lon}</p>
+      <div>
+        <p>yo</p>
+        <p>lat: {lat}</p>
+        <p>lon: {lon}</p>
+      </div>
+      <div>
+        <CurrentWeather currentData={forecast.current}/>
+      </div>
     </div>
   );
 }

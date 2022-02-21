@@ -7,6 +7,7 @@ function App() {
 
   const [lat, setLat] = useState();
   const [lon, setLon] = useState();
+  const [forecast, setForecast] = useState([]);
 
   const [errors, setErrors] = useState([]);
 
@@ -15,6 +16,7 @@ function App() {
 
   //get location via browser geolocation
   useEffect(() => {
+    const fetchData = async () => {
     if (!navigator.geolocation) {
       setErrors(errors => [...errors, "Location not supported"]);
     } else {
@@ -23,10 +25,20 @@ function App() {
           setLon(position.coords.longitude);
         });
 
-      console.log("Latitude is: ", lat)
-      console.log("Longitude is: ", lon)
-    }
+      // console.log("Latitude is: ", lat)
+      // console.log("Longitude is: ", lon)
+      }
+      await fetch(`${process.env.REACT_APP_API_URL}?lat=${lat}&lon=${lon}&units=imperial&APPID=${process.env.REACT_APP_API_KEY}`)
+        .then(res=>res.json())
+        .then(result => {
+          setForecast(result)
+          console.log(result)
+          console.log(`${process.env.REACT_APP_API_URL}?lat=${lat}&lon=${lon}$units=imperial&APPID=${process.env.REACT_API_KEY}`)
 
+        });
+      }
+    
+    fetchData();
     
   }, [lat, lon]);
 

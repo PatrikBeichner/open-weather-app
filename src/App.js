@@ -16,6 +16,8 @@ function App() {
 
   //get location via browser geolocation
   useEffect(() => {
+const controller = new AbortController();
+
     const fetchData = async () => {
     if (!navigator.geolocation) {
       setErrors(errors => [...errors, "Location not supported"]);
@@ -35,7 +37,17 @@ function App() {
           console.log(result)
           console.log(`${process.env.REACT_APP_API_URL}?lat=${lat}&lon=${lon}$units=imperial&APPID=${process.env.REACT_API_KEY}`)
 
-        });
+        })
+      .catch((err) => {
+        if (err.name === 'AbortError') {
+          console.log('successfully aborted');
+        } else {
+          //handle error here
+        }
+      })
+      return () => {
+        controller.abort();
+      }
       }
     
     fetchData();

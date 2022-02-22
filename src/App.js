@@ -71,7 +71,7 @@ const controller = new AbortController();
         <p>lon: {lon}</p>
       </div>
       <div>
-        <CurrentWeather currentData={forecast.current}/>
+        <CurrentWeather currentData={forecast.current} hourlyData={forecast.hourly}/>
       </div>
     </div>
   );

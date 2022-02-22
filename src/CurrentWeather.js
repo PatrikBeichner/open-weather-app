@@ -1,7 +1,10 @@
 import React from 'react'
 
-export default function CurrentWeather() {
+export default function CurrentWeather({currentData, hourlyData}) {
   return (
-    <div>CurrentWeather</div>
+    <div>
+        <p>Current weather</p>
+        <p>{currentData.temp}</p>
+    </div>
   )
 }

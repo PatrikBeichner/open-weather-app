@@ -1,5 +1,4 @@
 import React from 'react'
-// import { MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -10,27 +9,17 @@ import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
 
-export default function CurrentWeather({currentData, hourlyData}) {
+export default function DailyWeather({dailyData}) {
   
     const iconUrl = 'http://openweathermap.org/img/wn/'
 
-    if (currentData) {
+    if (dailyData) {
     
-        let currTemp = Math.round(currentData.temp)
-        console.log(currTemp)
-        let fLike = Math.round(currentData.feels_like)
-        let icon = `${iconUrl}${currentData.weather[0].icon}@2x.png`
+        
 
     return (
     <>
-        <div>
-            <p>Current weather</p>
-            <p>{currTemp}&deg;F</p>
-            <p>{fLike}&deg;F</p>
-            <p>{currentData.humidity}&#37;</p>
-            <p>{currentData.weather[0].main}</p>
-            <img src={`${iconUrl}${currentData.weather[0].icon}@2x.png`} alt={currentData.weather[0].main}/>
-        </div>
+        
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
             <Grid item xs={8}>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit'
+// import { MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit'
 
 export default function CurrentWeather({currentData, hourlyData}) {
   

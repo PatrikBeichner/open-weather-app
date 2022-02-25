@@ -8,17 +8,64 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
+function RenderCard({ daily }) {
+    return(
+        <div>
+            <Card sx={{ maxWidth: 345, display: 'flex' }}>
+                ?
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                        {daily.temp.day}&deg;F
+                    </Typography>
+                    <Typography gutterBottom variant="h5" component="div">
+                        {daily.weather[0].main}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                        feels like: {daily.feels_like.day}&deg;F
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                        humidity: {daily.humidity}&#37;
+                    </Typography>
+                </CardContent>
+            </Card>
+        </div>
+    )
+}
+
 
 export default function DailyWeather({dailyData}) {
   
     const iconUrl = 'http://openweathermap.org/img/wn/'
 
     if (dailyData) {
-    
+        const cards = dailyData.map((daily, i) => {
+            return (
+                <div key={i}>
+                    <RenderCard daily={daily} />
+                    <h1>hi</h1>
+                </div>
+            )
+         })
         
 
-    return (
-    <>
+     return (
+         <div>
+             {cards}
+         </div>
+     )   
+} else {
+      return (
+          <div>
+              <h1>Loading...</h1>
+          </div>
+      )
+  }
+}
+
+
+
+
+{/* <>
         
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
@@ -47,12 +94,4 @@ export default function DailyWeather({dailyData}) {
             </Grid>
             </Grid>
         </Box>
-    </>
-  )} else {
-      return (
-          <div>
-              <h1>Loading...</h1>
-          </div>
-      )
-  }
-}
+    </> */}

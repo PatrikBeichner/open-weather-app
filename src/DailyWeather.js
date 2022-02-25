@@ -12,19 +12,18 @@ function RenderCard({ daily }) {
     return(
         <div>
             <Card sx={{ maxWidth: 345, display: 'flex' }}>
-                ?
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        {daily.temp.day}&deg;F
+                        {daily.temp.day.toFixed(0)}&deg;F
                     </Typography>
                     <Typography gutterBottom variant="h5" component="div">
                         {daily.weather[0].main}
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        feels like: {daily.feels_like.day}&deg;F
+                        feels like: {daily.feels_like.day.toFixed(0)}&deg;F
                     </Typography>
                     <Typography variant="body2" color="text.secondary">
-                        humidity: {daily.humidity}&#37;
+                        humidity: {daily.humidity.toFixed(0)}&#37;
                     </Typography>
                 </CardContent>
             </Card>
@@ -42,16 +41,15 @@ export default function DailyWeather({dailyData}) {
             return (
                 <div key={i}>
                     <RenderCard daily={daily} />
-                    <h1>hi</h1>
                 </div>
             )
          })
         
 
      return (
-         <div>
-             {cards}
-         </div>
+         <Grid container spacing={2}>
+                {cards}
+         </Grid>
      )   
 } else {
       return (

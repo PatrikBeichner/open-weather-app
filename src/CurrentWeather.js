@@ -8,6 +8,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import { Paper } from '@mui/material';
 
 
 export default function CurrentWeather({currentData, hourlyData}) {
@@ -23,18 +24,18 @@ export default function CurrentWeather({currentData, hourlyData}) {
 
     return (
     <>
-        <div>
+        {/* <div>
             <p>Current weather</p>
             <p>{currTemp}&deg;F</p>
             <p>{fLike}&deg;F</p>
             <p>{currentData.humidity}&#37;</p>
             <p>{currentData.weather[0].main}</p>
             <img src={`${iconUrl}${currentData.weather[0].icon}@2x.png`} alt={currentData.weather[0].main}/>
-        </div>
+        </div> */}
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2}>
             <Grid item xs={8}>
-            <Card sx={{ maxWidth: 345, display: 'flex' }}>
+            <Paper sx={{ maxWidth: 345, display: 'flex' }}>
                 <CardMedia
                     component="img"
                     height="140"
@@ -60,7 +61,7 @@ export default function CurrentWeather({currentData, hourlyData}) {
                         sunset: {new Date(currentData.sunset * 1000).toLocaleTimeString('en-IN')};
                     </Typography>
                 </CardContent>
-            </Card>
+            </Paper>
             </Grid>
             </Grid>
         </Box>

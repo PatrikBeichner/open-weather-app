@@ -70,15 +70,16 @@ function App() {
 
   return (
     <div className="App">
-      <div>
+      {/* <div>
         <p>yo</p>
         <p>lat: {lat}</p>
         <p>lon: {lon}</p>
-      </div>
-      <div>
+      </div> */}
+      
         <CurrentWeather currentData={forecast.current} hourlyData={forecast.hourly}/>
-        <DailyWeather dailyData={forecast.daily} />
-      </div>
+        <div>
+          <DailyWeather dailyData={forecast.daily} />
+        </div>
     </div>
   );
 }

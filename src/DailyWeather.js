@@ -8,48 +8,11 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 
-function RenderCard({ daily }) {
-  return (
-    <div>
-      <Grid item xs={12} sm={6} md={2}>
-        <Card sx={{ display: 'flex' }}>
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-              {new Date(daily.dt * 1000).toLocaleTimeString('en-IN')}
-            </Typography>
-
-            <Typography gutterBottom variant="h5" component="div">
-              {daily.temp.day.toFixed(0)}&deg;F
-            </Typography>
-            <Typography gutterBottom variant="h5" component="div">
-              hi: {daily.temp.day.toFixed(0)}&deg;F
-            </Typography>
-            <Typography gutterBottom variant="h5" component="div">
-              {daily.weather[0].main}
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              feels like: {daily.feels_like.day.toFixed(0)}&deg;F
-            </Typography>
-            <Typography variant="body2" color="text.secondary">
-              humidity: {daily.humidity.toFixed(0)}&#37;
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
-    </div>
-  );
-}
 
 export default function DailyWeather({ dailyData }) {
   const iconUrl = 'http://openweathermap.org/img/wn/';
 
   if (dailyData) {
-    // const cards = dailyData.slice(0, 5).map((daily, i) => {
-    //   return (
-    //       <RenderCard key={i} daily={daily} />
-    //   );
-    // });
-
     return (
         <Grid container>
             {dailyData.slice(0, 5).map((daily, i) => (
@@ -64,11 +27,11 @@ export default function DailyWeather({ dailyData }) {
                                 {daily.temp.day.toFixed(0)}&deg;F
                             </Typography>
                             <Typography gutterBottom variant="h5" component="div">
+                                {daily.weather[0].main}
+                            </Typography>
+                            <Typography gutterBottom variant="body2" component="div">
                                 max: {daily.temp.max.toFixed(0)}&deg;F
                                 min: {daily.temp.min.toFixed(0)}&deg;F
-                            </Typography>
-                            <Typography gutterBottom variant="h5" component="div">
-                                {daily.weather[0].main}
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
                                 feels like: {daily.feels_like.day.toFixed(0)}&deg;F
@@ -79,7 +42,7 @@ export default function DailyWeather({ dailyData }) {
                         </CardContent>
                     </Card>
                 </Grid>
-            ))};
+            ))}
         </Grid>)
   } else {
     return (

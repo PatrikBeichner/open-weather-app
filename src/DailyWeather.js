@@ -13,6 +13,13 @@ function RenderCard({ daily }) {
         <div>
             <Card sx={{ maxWidth: 345, display: 'flex' }}>
                 <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                {new Date(daily.dt * 1000).toLocaleTimeString('en-IN')}
+                    </Typography>
+
+                    <Typography gutterBottom variant="h5" component="div">
+                        {daily.temp.day.toFixed(0)}&deg;F
+                    </Typography>
                     <Typography gutterBottom variant="h5" component="div">
                         {daily.temp.day.toFixed(0)}&deg;F
                     </Typography>

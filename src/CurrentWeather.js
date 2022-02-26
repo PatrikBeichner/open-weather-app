@@ -53,6 +53,12 @@ export default function CurrentWeather({currentData, hourlyData}) {
                     <Typography variant="body2" color="text.secondary">
                         humidity: {currentData.humidity}&#37;
                     </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                        sunrise: {new Date(currentData.sunrise * 1000).toLocaleTimeString('en-IN')};
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary">
+                        sunset: {new Date(currentData.sunset * 1000).toLocaleTimeString('en-IN')};
+                    </Typography>
                 </CardContent>
             </Card>
             </Grid>

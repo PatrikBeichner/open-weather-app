@@ -77,9 +77,7 @@ function App() {
       </div> */}
       
         <CurrentWeather currentData={forecast.current} hourlyData={forecast.hourly}/>
-        <div>
-          <DailyWeather dailyData={forecast.daily} />
-        </div>
+        <DailyWeather dailyData={forecast.daily} />
     </div>
   );
 }

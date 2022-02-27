@@ -14,10 +14,18 @@ export default function DailyWeather({ dailyData }) {
 
   if (dailyData) {
     return (
-        <Grid container>
-            {dailyData.slice(0, 5).map((daily, i) => (
+        <Box 
+        display="flex"
+        justifyContent="center"
+        alignItems="center">
+        <Grid container spacing={{ xs: 2, md: 3 }} >
+            {dailyData.slice(0, 5).map((daily, i) => {
                 // <RenderCard key={i} daily={daily} />
-                <Grid item xs={12} sm={6} md={2}>
+
+                let icon = `${iconUrl}${daily.weather[0].icon}@2x.png`
+
+                return (
+                <Grid item xs={12} sm={6} md={2} key={i} >
                     <Card sx={{ display: 'flex' }}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
@@ -26,6 +34,11 @@ export default function DailyWeather({ dailyData }) {
                             <Typography gutterBottom variant="h5" component="div">
                                 {daily.temp.day.toFixed(0)}&deg;F
                             </Typography>
+                            <CardMedia
+                                component="img"
+                                height="140"
+                                image={icon}
+                                alt={daily.weather[0].main} />
                             <Typography gutterBottom variant="h5" component="div">
                                 {daily.weather[0].main}
                             </Typography>
@@ -42,8 +55,10 @@ export default function DailyWeather({ dailyData }) {
                         </CardContent>
                     </Card>
                 </Grid>
-            ))}
-        </Grid>)
+                )
+                })}
+        </Grid>
+        </Box>)
   } else {
     return (
       <div>

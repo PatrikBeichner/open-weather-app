@@ -32,10 +32,10 @@ export default function CurrentWeather({currentData, hourlyData}) {
             <p>{currentData.weather[0].main}</p>
             <img src={`${iconUrl}${currentData.weather[0].icon}@2x.png`} alt={currentData.weather[0].main}/>
         </div> */}
-        <Box sx={{ flexGrow: 1 }}>
-            <Grid container spacing={2}>
+        {/* <Box display='flex-center' sx={{ flexGrow: 1, justifyContent: 'center'}}> */}
+            <Grid container justifyContent='center' spacing={2}>
             <Grid item xs={8}>
-            <Paper sx={{ maxWidth: 345, display: 'flex' }}>
+            <Card sx={{ maxWidth: 345,  display: 'flex' }}>
                 <CardMedia
                     component="img"
                     height="140"
@@ -61,10 +61,10 @@ export default function CurrentWeather({currentData, hourlyData}) {
                         sunset: {new Date(currentData.sunset * 1000).toLocaleTimeString('en-IN')};
                     </Typography>
                 </CardContent>
-            </Paper>
+            </Card>
             </Grid>
             </Grid>
-        </Box>
+        {/* </Box> */}
     </>
   )} else {
       return (

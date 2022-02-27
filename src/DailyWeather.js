@@ -14,11 +14,11 @@ export default function DailyWeather({ dailyData }) {
 
   if (dailyData) {
     return (
-        <Box 
-        display="flex"
-        justifyContent="center"
-        alignItems="center">
-        <Grid container spacing={{ xs: 2, md: 3 }} >
+        // <Box 
+        // display="flex"
+        // justifyContent="center"
+        // alignItems="center">
+        <Grid container justifyContent='center' spacing={{ xs: 2, md: 3 }} >
             {dailyData.slice(0, 5).map((daily, i) => {
                 // <RenderCard key={i} daily={daily} />
 
@@ -58,7 +58,8 @@ export default function DailyWeather({ dailyData }) {
                 )
                 })}
         </Grid>
-        </Box>)
+        //</Box>
+        )
   } else {
     return (
       <div>

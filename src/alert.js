@@ -3,6 +3,7 @@ import { Box } from '@mui/system';
 import { Button } from '@mui/material';
 import { Typography } from '@mui/material';
 import { Modal } from '@mui/material';
+import { Alert } from '@mui/material';
 
 const style = {
     position: 'absolute',
@@ -16,18 +17,44 @@ const style = {
     p: 4,
 };
 
-export default function Alert({ alerts }) {
+export default function Alerts({ alerts }) {
     const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false)
+    // const handleOpen = () => setOpen(true);
+    // const handleClose = () => setOpen(false)
   return (
     <>
-        <div>Hi im an alert</div>
-        <p>I'm hardcoded: {alerts[0].event}</p>
-        {alerts.map((alerts, i) => {
+        <Alert variant='filled' severity='error' >Weather Alerts in your area:
+            {alerts.map((alerts, i) => { 
+                const handleOpen = () => setOpen(true);
+                const handleClose = () => setOpen(false)
+                
+                return( 
+                <>
+                    <Button key={i} onClick={handleOpen}>{alerts.event}</Button>
+                    <Modal
+                        open={open}
+                        onClose={handleClose}
+                        aria-labelledby="modal-modal-title"
+                        aria-describedby="modal-modal-description"
+                        overlayStyle={{backgroundColor: 'transparent'}}
+                        BackdropProps={{ invisible: true }}
+                    >
+                        <Box sx={style}>
+                            <Typography id="modal-modal-title" variant="h6" component="h2">
+                                issued by: {alerts.sender_name}
+                            </Typography>
+                            <Typography id="modal-modal-description" sx={{ mt: 2 }}>
+                                {alerts.description}
+                            </Typography>
+                        </Box>
+                    </Modal>
+                </>
+        )})}
+        </Alert>
+        {/* {alerts.map((alerts, i) => {
             return(
-            <p key={i}>{alerts.event}</p>)})}
-        <Modal
+            <Alert variant='filled' severity='error' key={i}><p>{alerts.event}</p></Alert>)})} */}
+        {/* <Modal
             open={open}
             onClose={handleClose}
             aria-labelledby="modal-modal-title"
@@ -41,7 +68,7 @@ export default function Alert({ alerts }) {
             {alerts[0].description}
           </Typography>
         </Box>
-      </Modal>
+      </Modal> */}
     </>
   )
 

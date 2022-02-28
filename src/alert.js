@@ -24,7 +24,10 @@ export default function Alert({ alerts }) {
   return (
     <>
         <div>Hi im an alert</div>
-        <p>{alerts[0].event}</p>
+        <p>I'm hardcoded: {alerts[0].event}</p>
+        {alerts.map((alerts, i) => {
+            return(
+            <p key={i}>{alerts.event}</p>)})}
         <Modal
             open={open}
             onClose={handleClose}

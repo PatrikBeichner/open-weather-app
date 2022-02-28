@@ -18,7 +18,8 @@ export default function DailyWeather({ dailyData }) {
         // display="flex"
         // justifyContent="center"
         // alignItems="center">
-        <Grid container justifyContent='center' spacing={{ xs: 2, md: 3 }} >
+        <Grid container 
+         spacing={{ xs: 2, md: 3 }} >
             {dailyData.slice(0, 5).map((daily, i) => {
                 // <RenderCard key={i} daily={daily} />
 
@@ -29,7 +30,8 @@ export default function DailyWeather({ dailyData }) {
                     <Card sx={{ display: 'flex' }}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">
-                                {new Date(daily.dt * 1000).toLocaleTimeString('en-IN')}
+                                {/* {new Date(daily.dt * 1000).toLocaleDateString('en-IN')} */}
+                                {new Date(daily.dt * 1000).toLocaleString('en-us', {weekday: 'long'})}
                             </Typography>
                             <Typography gutterBottom variant="h5" component="div">
                                 {daily.temp.day.toFixed(0)}&deg;F

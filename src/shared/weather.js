@@ -1704,7 +1704,17 @@ export const WEATHER = {
             "tags": [
                 "Flood"
             ]
-        }
+        },
+        {
+            "sender_name": "NWS Pittsburgh (Western Pennsylvania and East Central Ohio)",
+            "event": "Winter Storm",
+            "start": 1645755420,
+            "end": 1646049600,
+            "description": ".hey ITS A STORM PIRE AT 10 AM EST THIS MORNING...\nScattered light rain or snow showers will continue through the\nmorning. Several stream gauges continue to run high, and these will\ncontinue to be monitored.  However, the threat of widespread minor\nflooding is ending. Please continue to heed remaining road closures.",
+            "tags": [
+                "Flood"
+            ]
+        },
     ]
 }
 

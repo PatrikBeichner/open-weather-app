@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import CurrentWeather from './CurrentWeather';
 import { WEATHER } from './shared/weather';
 import DailyWeather from './DailyWeather';
+import Alert from './alert';
 
 function App() {
 
@@ -75,7 +76,7 @@ function App() {
         <p>lat: {lat}</p>
         <p>lon: {lon}</p>
       </div> */}
-      
+        {forecast.alerts ? <Alert alerts={forecast.alerts} /> : null}
         <CurrentWeather currentData={forecast.current} hourlyData={forecast.hourly}/>
         <DailyWeather dailyData={forecast.daily} />
     </div>

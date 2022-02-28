@@ -76,7 +76,7 @@ function App() {
         <p>lat: {lat}</p>
         <p>lon: {lon}</p>
       </div> */}
-        {forecast.alerts ? <Alert alerts={forecast.alerts} /> : null}
+        {forecast.alerts[0] ? <Alert alerts={forecast.alerts} /> : null}
         <CurrentWeather currentData={forecast.current} hourlyData={forecast.hourly}/>
         <DailyWeather dailyData={forecast.daily} />
     </div>

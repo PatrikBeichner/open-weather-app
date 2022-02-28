@@ -34,35 +34,35 @@ export default function CurrentWeather({currentData, hourlyData}) {
         </div> */}
         {/* <Box display='flex-center' sx={{ flexGrow: 1, justifyContent: 'center'}}> */}
             <Grid container justifyContent='center' spacing={2}>
-            <Grid item xs={8}>
-            <Card sx={{ maxWidth: 345,  display: 'flex' }}>
-                <CardMedia
-                    component="img"
-                    height="140"
-                    image={icon}
-                    alt={currentData.weather[0].main} />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
-                        {currTemp}&deg;F
-                    </Typography>
-                    <Typography gutterBottom variant="h5" component="div">
-                        {currentData.weather[0].main}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        feels like: {fLike}&deg;F
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        humidity: {currentData.humidity}&#37;
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        sunrise: {new Date(currentData.sunrise * 1000).toLocaleTimeString('en-IN')};
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        sunset: {new Date(currentData.sunset * 1000).toLocaleTimeString('en-IN')};
-                    </Typography>
-                </CardContent>
-            </Card>
-            </Grid>
+                <Grid item xs={8}>
+                    <Card sx={{ maxWidth: 345,  display: 'flex' }}>
+                        <CardMedia
+                            component="img"
+                            height="140"
+                            image={icon}
+                            alt={currentData.weather[0].main} />
+                        <CardContent>
+                            <Typography gutterBottom variant="h5" component="div">
+                                {currTemp}&deg;F
+                            </Typography>
+                            <Typography gutterBottom variant="h5" component="div">
+                                {currentData.weather[0].main}
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                feels like: {fLike}&deg;F
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                humidity: {currentData.humidity}&#37;
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                sunrise: {new Date(currentData.sunrise * 1000).toLocaleTimeString('en-IN')};
+                            </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                sunset: {new Date(currentData.sunset * 1000).toLocaleTimeString('en-IN')};
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                </Grid>
             </Grid>
         {/* </Box> */}
     </>

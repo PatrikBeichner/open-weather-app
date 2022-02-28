@@ -20,7 +20,6 @@ export default function Alert({ alerts }) {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false)
-
   return (
     <>
         <div>Hi im an alert</div>
@@ -45,4 +44,5 @@ export default function Alert({ alerts }) {
       </Modal>
     </>
   )
+
 }

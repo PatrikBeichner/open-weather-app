@@ -18,7 +18,7 @@ export default function DailyWeather({ dailyData }) {
         // display="flex"
         // justifyContent="center"
         // alignItems="center">
-        <Grid container 
+        <Grid container justifyContent="center"
          spacing={{ xs: 2, md: 3 }} >
             {dailyData.slice(0, 5).map((daily, i) => {
                 // <RenderCard key={i} daily={daily} />

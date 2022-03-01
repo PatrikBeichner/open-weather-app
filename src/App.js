@@ -4,6 +4,7 @@ import CurrentWeather from './CurrentWeather';
 import { WEATHER } from './shared/weather';
 import DailyWeather from './DailyWeather';
 import Alerts from './alert';
+import AlertsDialog from './alertDialog';
 
 function App() {
 
@@ -77,6 +78,7 @@ function App() {
         <p>lon: {lon}</p>
       </div> */}
         {forecast.alerts[0] ? <Alerts alerts={forecast.alerts} /> : null}
+        {forecast.alerts[0] ? <AlertsDialog alerts={forecast.alerts} /> : null}
         <CurrentWeather currentData={forecast.current} hourlyData={forecast.hourly}/>
         <DailyWeather dailyData={forecast.daily} />
     </div>

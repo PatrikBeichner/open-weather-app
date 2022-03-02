@@ -43,7 +43,6 @@ export default function CurrentWeather({currentData, hourlyData}) {
                     <Card sx={{   display: 'flex' }}>
                         <CardMedia
                             component="img"
-                            height="140"
                             image={icon}
                             alt={currentData.weather[0].main} />
                         <CardContent>

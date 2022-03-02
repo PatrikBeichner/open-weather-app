@@ -2,8 +2,8 @@ import React from 'react'
 
 export default function HourlyWeather({hourlyData, max, min}) {
 
-    let chartMax= max.toFixed(0) +5;
-    let chartMin= min.toFixed(0) - 5;
+    let chartMax= max.toFixed(0);
+    let chartMin= min.toFixed(0);
   return (
     <div>
         <p>{chartMax}</p>

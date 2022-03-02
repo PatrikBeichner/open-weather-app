@@ -22,24 +22,24 @@ const style = {
 export default function AlertAccordion({ alerts }) {
   return (
     <>
-      <Alert variant="filled" severity="error">
-        Weather Alerts in your area:
+      <Alert variant="outlined" severity="error">
+        <Typography>Weather Alerts in your area:</Typography>
         {alerts.map((alerts, i) => (
             <Accordion key={i} sx={{
                 backgroundColor: "rgb(211, 47, 47, 1)"
               }}>
                 <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
+                    expandIcon={<ExpandMoreIcon color='common.white'/>}
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <Typography>{alerts.event}</Typography>
+                    <Typography color='common.white'>{alerts.event}</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
-                    <Typography>
+                    <Typography color='common.white'>
                         from: {alerts.sender_name}
                     </Typography>
-                    <Typography>
+                    <Typography color='common.white'>
                         {alerts.description}
                     </Typography>
                 </AccordionDetails>

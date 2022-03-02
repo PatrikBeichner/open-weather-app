@@ -32,10 +32,15 @@ export default function CurrentWeather({currentData, hourlyData}) {
             <p>{currentData.weather[0].main}</p>
             <img src={`${iconUrl}${currentData.weather[0].icon}@2x.png`} alt={currentData.weather[0].main}/>
         </div> */}
-        {/* <Box display='flex-center' sx={{ flexGrow: 1, justifyContent: 'center'}}> */}
-            <Grid container justifyContent='center' spacing={2}>
-                <Grid item xs={8}>
-                    <Card sx={{ maxWidth: 345,  display: 'flex' }}>
+        {/* <Box display='center' > */}
+            <Grid 
+              container
+              justifyContent='center'
+              alignItems='center'
+              spacing={2}
+            >
+                <Grid item xs={10} lg={6}>
+                    <Card sx={{   display: 'flex' }}>
                         <CardMedia
                             component="img"
                             height="140"

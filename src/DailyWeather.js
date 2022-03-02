@@ -26,7 +26,7 @@ export default function DailyWeather({ dailyData }) {
                 let icon = `${iconUrl}${daily.weather[0].icon}@2x.png`
 
                 return (
-                <Grid item xs={12} sm={6} md={2} key={i} >
+                <Grid item xs={10} sm={6} md={2} key={i} >
                     <Card sx={{ display: 'flex' }}>
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="div">

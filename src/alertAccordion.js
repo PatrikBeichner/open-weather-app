@@ -22,8 +22,8 @@ const style = {
 export default function AlertAccordion({ alerts }) {
   return (
     <>
-      <Alert variant="outlined" severity="error">
-        <Typography>Weather Alerts in your area:</Typography>
+      {/* <Alert variant="outlined" severity="error"> */}
+        {/* <Typography>Weather Alerts in your area:</Typography> */}
         {alerts.map((alerts, i) => (
             <Accordion key={i} sx={{
                 backgroundColor: "rgb(211, 47, 47, 1)"
@@ -33,7 +33,7 @@ export default function AlertAccordion({ alerts }) {
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <Typography color='common.white'>{alerts.event}</Typography>
+                    <Typography color='common.white'>weather alert: {alerts.event}</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography color='common.white'>
@@ -45,7 +45,7 @@ export default function AlertAccordion({ alerts }) {
                 </AccordionDetails>
             </Accordion>
         ))}
-      </Alert>
+      {/* </Alert> */}
     </>
   );
 }

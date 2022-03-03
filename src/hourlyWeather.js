@@ -1,4 +1,45 @@
 import React from 'react'
+import { Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+  } from 'chart.js';
+  import { Bar } from 'react-chartjs-2';
+
+
+  ChartJS.register(
+      CategoryScale,
+      LinearScale,
+      BarElement,
+      Title,
+      Tooltip,
+      Legend
+  );
+
+  export const options = {
+      responsive: true,
+      plugins: {
+          legend: {
+              position: 'top' as const,
+          },
+          title: {
+              display: true,
+              text: 'Next 12 Hours'
+          },
+      },
+  };
+
+  const labels = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+
+  export const data = {
+      labels,
+      datasets: {
+          label: 
+      }
+  }
 
 export default function HourlyWeather({hourlyData, max, min}) {
 
@@ -17,7 +58,11 @@ export default function HourlyWeather({hourlyData, max, min}) {
                 </div>
             )
         })}
-        Hourly data
+        <div>
+            <canvas id='hourChart'>
+
+            </canvas>
+        </div>
     </div>
   )
 }

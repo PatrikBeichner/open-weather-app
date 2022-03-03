@@ -7,6 +7,7 @@ import Alerts from './alert';
 import AlertsDialog from './alertDialog';
 import AlertAccordion from './alertAccordion';
 import HourlyWeather from './hourlyWeather';
+import RecipeReviewCard from './recipeReviewCard';
 
 function App() {
 
@@ -83,6 +84,7 @@ function App() {
         {/* {forecast.alerts[0] ? <AlertsDialog alerts={forecast.alerts} /> : null} */}
         {forecast.alerts[0] ? <AlertAccordion alerts={forecast.alerts} /> : null}
         <CurrentWeather currentData={forecast.current} hourlyData={forecast.hourly}/>
+        {/* <RecipeReviewCard /> */}
         {/* <HourlyWeather hourlyData={forecast.hourly} max={forecast.daily[0].temp.max} min={forecast.daily[0].temp.min}/> */}
         <DailyWeather dailyData={forecast.daily} />
     </div>

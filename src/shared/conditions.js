@@ -1,23 +1,33 @@
+import {
+    WeatherThunderstorm,
+    WeatherDrizzle,
+    WeatherRain,
+    WeatherSnow,
+    WeatherFog,
+    
+    WeatherCloudy } from '@styled-icons/fluentui-system-regular'
+
+
 export const CONDITIONS = [
     {
         main: 'Thunderstorm',
-        //@styled-icons/fluentui-system-regular/WeatherThunderstorm
+        // @styled-icons/fluentui-system-regular/WeatherThunderstorm
         icon: <WeatherThunderstorm />
     },
     {
         main: 'Drizzle',
-       //@styled-icons/fluentui-system-regular/WeatherDrizzle
+    //    @styled-icons/fluentui-system-regular/WeatherDrizzle
         icon: <WeatherDrizzle />
     },
 
     {
         main: 'Rain',
-        //@styled-icons/fluentui-system-regular/WeatherRain
+        // @styled-icons/fluentui-system-regular/WeatherRain
         icon: <WeatherRain />
     },
     {
         main: 'Snow',
-        //@styled-icons/fluentui-system-regular/WeatherSnow
+        // @styled-icons/fluentui-system-regular/WeatherSnow
         icon: <WeatherSnow />
     },
     {
@@ -54,21 +64,23 @@ export const CONDITIONS = [
     },
     {
         main: 'Squall',
-        icon: <WeatherFog />},
+        icon: <WeatherFog />
+    },
     {
         main: 'Tornado',
-        //@styled-icons/fluentui-system-regular/WeatherFog
-        icon: <WeatherFog />},
+        // @styled-icons/fluentui-system-regular/WeatherFog
+        icon: <WeatherFog />
+    },
     {
         main: 'Clear',
-        //@styled-icons/fluentui-system-regular/WeatherSunny
-        //@styled-icons/fluentui-system-regular/WeatherMoon
-        iconDay: <WeatherSunny />,
-        iconNight: <WeatherMoon />
+        // @styled-icons/fluentui-system-regular/WeatherSunny
+        // @styled-icons/fluentui-system-regular/WeatherMoon
+        iconDay: 'WeatherSunny',
+        iconNight: 'WeatherMoon'
     },
     {
         main: 'Clouds',
-        //@styled-icons/fluentui-system-regular/WeatherCloudy
+        // @styled-icons/fluentui-system-regular/WeatherCloudy
         icon: <WeatherCloudy />
     }
 ]

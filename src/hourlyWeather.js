@@ -30,7 +30,11 @@ import {
   }
   
 
+
+
 export default function HourlyWeather({ hourlyData }) {
+
+    //let cond
 
     let chartData = hourlyData.slice(0, 13).map(({ dt, temp, weather }) => {
         let time = new Date(dt * 1e3).toLocaleTimeString('en-US', { hour12: false, hour: '2-digit' },)
@@ -60,7 +64,9 @@ console.log(chartData)
                 <XAxis  dataKey="time" name="time" unit="h" />
                 <YAxis type="number" dataKey="temF" name="temp" unit="&deg;F" />
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                <Scatter name="Hourly Temp" data={chartData} shape={CONDITIONS[chartData.cond]}>
+                {/* <Scatter name="Hourly Temp" data={chartData} shape={CONDITIONS[chartData.cond]}> */}
+                <Scatter name="Hourly Temp" data={chartData} shape={ <RenderIcon con={chartData.cond}/>} >
+
                 <LabelList dataKey="temF" position="bottom" />
                 </Scatter>
             </ScatterChart>

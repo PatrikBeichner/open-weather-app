@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box } from '@mui/system';
-import { Scatter, ScatterChart, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts'
+import { Scatter, ScatterChart, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, LabelList } from 'recharts'
 
 import {
     WeatherThunderstorm,
@@ -60,7 +60,9 @@ console.log(chartData)
                 <XAxis  dataKey="time" name="time" unit="h" />
                 <YAxis type="number" dataKey="temF" name="temp" unit="&deg;F" />
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                <Scatter name="Hourly Temp" data={chartData} shape={CONDITIONS[chartData.cond]}/>
+                <Scatter name="Hourly Temp" data={chartData} shape={CONDITIONS[chartData.cond]}>
+                <LabelList dataKey="temF" position="bottom" />
+                </Scatter>
             </ScatterChart>
         
         </ResponsiveContainer>

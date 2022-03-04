@@ -32,15 +32,22 @@ import {
 
 export default function HourlyWeather({ hourlyData }) {
 
-//   let conSearch = `${hourlyData.weather[0].main}`;
+    let chartData = hourlyData.slice(0, 13).map(({ dt, temp, weather }) => {
+        let time = new Date(dt * 1e3).toLocaleTimeString('en-US', { hour12: false, hour: '2-digit' },)
+        let temF = Math.round(temp);
+        let cond = weather[0].main;
+        return { time, temF, cond }})
+
+//    let conSearch = `${hourlyData.weather[0].main}`;
 console.log(hourlyData)
+console.log(chartData)
   return (
     <>
         <h1>hopefully a chart is here someday</h1>
-        <Box sx={{ width: '100%', height: '100%' }}>
+        <Box sx={{ width: 800, height: 500 }}>
         <ResponsiveContainer width='99%' height='99%'>
             <ScatterChart
-                width={400}
+                width={800}
                 height={400}
                 margin={{
                     top: 20,
@@ -49,11 +56,11 @@ console.log(hourlyData)
                     left: 20,
                 }}
             >
-                <CartesianGrid />
-                <XAxis type="number" dataKey="hourlyData.dt" name="time" unit="h" />
-                <YAxis type="number" dataKey="y" name="hourlyData.temp" unit="deg" />
+                <CartesianGrid strokeDasharray="3 3"/>
+                <XAxis  dataKey="time" name="time" unit="h" />
+                <YAxis type="number" dataKey="temF" name="temp" unit="&deg;F" />
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
-                <Scatter name="Hourly Temp" data={hourlyData.temp} />
+                <Scatter name="Hourly Temp" data={chartData} shape={CONDITIONS[chartData.cond]}/>
             </ScatterChart>
         
         </ResponsiveContainer>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { useState } from 'react';
-// import { MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit'
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -15,6 +14,14 @@ import { styled } from '@mui/material/styles';
 import { IconButton } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Collapse } from '@mui/material';
+import {
+  WeatherThunderstorm,
+  WeatherDrizzle,
+  WeatherRain,
+  WeatherSnow,
+  WeatherFog,
+  WeatherSunny,
+  WeatherCloudy } from '@styled-icons/fluentui-system-regular'
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -30,22 +37,34 @@ const ExpandMore = styled((props) => {
 export default function CurrentWeather({ currentData, hourlyData }) {
   const [expanded, setExpanded] = useState(false);
 
+  const iconUrl = 'http://openweathermap.org/img/wn/';
+
+  let currTemp = Math.round(currentData.temp);
+  console.log(currTemp);
+  let fLike = Math.round(currentData.feels_like);
+  let icon = `${iconUrl}${currentData.weather[0].icon}@2x.png`;
+
+  let conSearch = `${currentData.weather[0].main}`;
+  // let iconEle = CONDITIONS.filter(word => word.main.indexOf(conSearch) >= 0).map(ele => ele.icon);
+  // let iconEle = [CONDITIONS.find(({ main }) => main === conSearch)]
+
+  console.log(conSearch);
+  // console.log(iconEle);
+
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
-  const iconUrl = 'http://openweathermap.org/img/wn/';
-
   if (currentData) {
-    let currTemp = Math.round(currentData.temp);
-    console.log(currTemp);
-    let fLike = Math.round(currentData.feels_like);
-    let icon = `${iconUrl}${currentData.weather[0].icon}@2x.png`;
+    // let currTemp = Math.round(currentData.temp);
+    // console.log(currTemp);
+    // let fLike = Math.round(currentData.feels_like);
+    // let icon = `${iconUrl}${currentData.weather[0].icon}@2x.png`;
 
-    let conSearch = `${currentData.weather[0].main}`;
-    let iconEle = CONDITIONS.filter((word) => word.main.indexOf(conSearch) >= 0);
-    console.log(conSearch);
-    console.log(iconEle);
+    // let conSearch = `${currentData.weather[0].main}`;
+    // let iconEle = CONDITIONS.filter((word) => word.main.indexOf(conSearch) >= 0);
+    // console.log(conSearch);
+    // console.log(iconEle);
 
     return (
       <>
@@ -62,7 +81,8 @@ export default function CurrentWeather({ currentData, hourlyData }) {
           <Grid item xs={10} lg={6}>
             <Card>
               <CardContent sx={{ display: 'flex' }}>
-                <CardMedia component="img" image={icon} alt={currentData.weather[0].main} />
+                {/* <CardMedia component="img" image={icon} alt={currentData.weather[0].main} /> */}
+                {CONDITIONS[conSearch]}                
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     {currTemp}&deg;F
@@ -93,15 +113,9 @@ export default function CurrentWeather({ currentData, hourlyData }) {
               <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
                   <Typography paragraph>dewpoint: {currentData.dew_point}:</Typography>
-                  <Typography paragraph>
-                    uv index: {currentData.uvi}
-                  </Typography>
-                  <Typography paragraph>
-                    wind speed: {currentData.wind_speed}
-                  </Typography>
-                  <Typography paragraph>
-                    wind gusts: {currentData.wind_gust}
-                  </Typography>
+                  <Typography paragraph>uv index: {currentData.uvi}</Typography>
+                  <Typography paragraph>wind speed: {currentData.wind_speed}</Typography>
+                  <Typography paragraph>wind gusts: {currentData.wind_gust}</Typography>
                   <Typography>pressure: {currentData.pressure}</Typography>
                 </CardContent>
               </Collapse>

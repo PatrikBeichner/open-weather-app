@@ -72,7 +72,7 @@ function App() {
     
 //   }, [lat, lon]);
 
-
+  if(forecast) {
   return (
     <div className="App">
       {/* <div>
@@ -89,6 +89,9 @@ function App() {
         <DailyWeather dailyData={forecast.daily} />
     </div>
   );
+    } else {
+      return <h1>Loading...</h1>
+    }
 }
 
 export default App;

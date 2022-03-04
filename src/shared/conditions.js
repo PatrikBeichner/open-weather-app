@@ -5,7 +5,7 @@ import {
     WeatherSnow,
     WeatherFog,
     WeatherSunny,
-    WeatherCloudy } from '@styled-icons/fluentui-system-regular'
+    WeatherCloudy } from '@emotion-icons/fluentui-system-regular'
 
 
 // export const CONDITIONS = [

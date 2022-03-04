@@ -21,7 +21,8 @@ import {
   WeatherSnow,
   WeatherFog,
   WeatherSunny,
-  WeatherCloudy } from '@styled-icons/fluentui-system-regular'
+  WeatherCloudy } from '@emotion-icons/fluentui-system-regular';
+
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -81,7 +82,7 @@ export default function CurrentWeather({ currentData, hourlyData }) {
           <Grid item xs={10} lg={6}>
             <Card>
               <CardContent sx={{ display: 'flex' }}>
-                {/* <CardMedia component="img" image={icon} alt={currentData.weather[0].main} /> */}
+                <CardMedia component="img" image={icon} alt={currentData.weather[0].main} />
                 {CONDITIONS[conSearch]}                
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">

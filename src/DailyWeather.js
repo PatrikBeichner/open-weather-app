@@ -54,6 +54,9 @@ export default function DailyWeather({ dailyData }) {
                             <Typography variant="body2" color="text.secondary">
                                 humidity: {daily.humidity.toFixed(0)}&#37;
                             </Typography>
+                            <Typography variant="body2" color="text.secondary">
+                                precip: {daily.pop*100}&#37;
+                            </Typography>
                         </CardContent>
                     </Card>
                 </Grid>

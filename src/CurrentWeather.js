@@ -9,7 +9,6 @@ import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import { Paper } from '@mui/material';
-import { CONDITIONS } from './shared/conditions';
 import { styled } from '@mui/material/styles';
 import { IconButton } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -22,6 +21,24 @@ import {
   WeatherFog,
   WeatherSunny,
   WeatherCloudy } from '@emotion-icons/fluentui-system-regular';
+
+  const CONDITIONS = {
+    Clouds: <WeatherCloudy />,
+    Clear: <WeatherSunny />,
+    Tornado: <WeatherFog />,
+    Squall: <WeatherFog />,
+    Ash: <WeatherFog />,
+    Dust: <WeatherFog />,
+    Sand: <WeatherFog />,
+    Fog: <WeatherFog />,
+    Haze: <WeatherFog />,
+    Smoke: <WeatherFog />,
+    Mist: <WeatherFog />,
+    Snow: <WeatherSnow />,
+    Rain: <WeatherRain />,
+    Drizzle: <WeatherDrizzle />,
+    Thunderstorm: <WeatherThunderstorm />,
+}
 
 
 const ExpandMore = styled((props) => {
@@ -39,17 +56,17 @@ export default function CurrentWeather({ currentData, hourlyData }) {
   const [expanded, setExpanded] = useState(false);
 
   const iconUrl = 'http://openweathermap.org/img/wn/';
-
-  let currTemp = Math.round(currentData.temp);
-  console.log(currTemp);
-  let fLike = Math.round(currentData.feels_like);
   let icon = `${iconUrl}${currentData.weather[0].icon}@2x.png`;
+  // let currTemp = Math.round(currentData.temp);
+  // console.log(currTemp);
+  // let fLike = Math.round(currentData.feels_like);
+  
 
   let conSearch = `${currentData.weather[0].main}`;
   // let iconEle = CONDITIONS.filter(word => word.main.indexOf(conSearch) >= 0).map(ele => ele.icon);
   // let iconEle = [CONDITIONS.find(({ main }) => main === conSearch)]
 
-  console.log(conSearch);
+  // console.log(conSearch);
   // console.log(iconEle);
 
   const handleExpandClick = () => {
@@ -86,13 +103,13 @@ export default function CurrentWeather({ currentData, hourlyData }) {
                 {CONDITIONS[conSearch]}                
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
-                    {currTemp}&deg;F
+                    {Math.round(currentData.temp)}&deg;F
                   </Typography>
                   <Typography gutterBottom variant="h5" component="div">
                     {currentData.weather[0].main}
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
-                    feels like: {fLike}&deg;F
+                    feels like: {Math.round(currentData.feels_like)}&deg;F
                   </Typography>
                   <Typography variant="body2" color="text.secondary">
                     humidity: {currentData.humidity}&#37;

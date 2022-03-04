@@ -85,8 +85,8 @@ function App() {
         {forecast.alerts[0] ? <AlertAccordion alerts={forecast.alerts} /> : null}
         <CurrentWeather currentData={forecast.current} hourlyData={forecast.hourly}/>
         {/* <RecipeReviewCard /> */}
-        {/* <HourlyWeather hourlyData={forecast.hourly} max={forecast.daily[0].temp.max} min={forecast.daily[0].temp.min}/> */}
         <DailyWeather dailyData={forecast.daily} />
+        <HourlyWeather hourlyData={forecast.hourly} max={forecast.daily[0].temp.max} min={forecast.daily[0].temp.min}/>
     </div>
   );
     } else {

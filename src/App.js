@@ -86,7 +86,7 @@ function App() {
         <CurrentWeather currentData={forecast.current} hourlyData={forecast.hourly}/>
         {/* <RecipeReviewCard /> */}
         <DailyWeather dailyData={forecast.daily} />
-        <HourlyWeather hourlyData={forecast.hourly} max={forecast.daily[0].temp.max} min={forecast.daily[0].temp.min}/>
+        {/* <HourlyWeather hourlyData={forecast.hourly} max={forecast.daily[0].temp.max} min={forecast.daily[0].temp.min}/> */}
     </div>
   );
     } else {

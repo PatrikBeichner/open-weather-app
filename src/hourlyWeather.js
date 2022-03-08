@@ -11,28 +11,56 @@ import {
     WeatherSunny,
     WeatherCloudy } from '@emotion-icons/fluentui-system-regular';
   
-    const CONDITIONS = {
-      Clouds: <WeatherCloudy />,
-      Clear: <WeatherSunny />,
-      Tornado: <WeatherFog />,
-      Squall: <WeatherFog />,
-      Ash: <WeatherFog />,
-      Dust: <WeatherFog />,
-      Sand: <WeatherFog />,
-      Fog: <WeatherFog />,
-      Haze: <WeatherFog />,
-      Smoke: <WeatherFog />,
-      Mist: <WeatherFog />,
-      Snow: <WeatherSnow />,
-      Rain: <WeatherRain />,
-      Drizzle: <WeatherDrizzle />,
-      Thunderstorm: <WeatherThunderstorm />,
-  }
+    
   
 
+function RenderIcon({ con }) {
 
+    // const CONDITIONS = {
+    //     Clouds: <WeatherCloudy />,
+    //     Clear: <WeatherSunny />,
+    //     Tornado: <WeatherFog />,
+    //     Squall: <WeatherFog />,
+    //     Ash: <WeatherFog />,
+    //     Dust: <WeatherFog />,
+    //     Sand: <WeatherFog />,
+    //     Fog: <WeatherFog />,
+    //     Haze: <WeatherFog />,
+    //     Smoke: <WeatherFog />,
+    //     Mist: <WeatherFog />,
+    //     Snow: <WeatherSnow />,
+    //     Rain: <WeatherRain />,
+    //     Drizzle: <WeatherDrizzle />,
+    //     Thunderstorm: <WeatherThunderstorm />,
+    // };
+
+    let icon = {con}
+    console.log(con)
+    
+    //console.log( icon )
+
+    return null
+}
 
 export default function HourlyWeather({ hourlyData }) {
+
+    const CONDITIONS = {
+        Clouds: <WeatherCloudy />,
+        Clear: <WeatherSunny />,
+        Tornado: <WeatherFog />,
+        Squall: <WeatherFog />,
+        Ash: <WeatherFog />,
+        Dust: <WeatherFog />,
+        Sand: <WeatherFog />,
+        Fog: <WeatherFog />,
+        Haze: <WeatherFog />,
+        Smoke: <WeatherFog />,
+        Mist: <WeatherFog />,
+        Snow: <WeatherSnow />,
+        Rain: <WeatherRain />,
+        Drizzle: <WeatherDrizzle />,
+        Thunderstorm: <WeatherThunderstorm />,
+    };
 
     //let cond
 
@@ -43,8 +71,8 @@ export default function HourlyWeather({ hourlyData }) {
         return { time, temF, cond }})
 
 //    let conSearch = `${hourlyData.weather[0].main}`;
-console.log(hourlyData)
-console.log(chartData)
+//console.log(hourlyData)
+//console.log(chartData)
   return (
     <>
         <h1>hopefully a chart is here someday</h1>
@@ -65,7 +93,8 @@ console.log(chartData)
                 <YAxis type="number" dataKey="temF" name="temp" unit="&deg;F" />
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
                 {/* <Scatter name="Hourly Temp" data={chartData} shape={CONDITIONS[chartData.cond]}> */}
-                <Scatter name="Hourly Temp" data={chartData} shape={ <RenderIcon con={chartData.cond}/>} >
+                <Scatter name="Hourly Temp" data={chartData} shape={ CONDITIONS[chartData.cond]} >
+                {/* <Scatter name="Hourly Temp" data={chartData} shape={ CONDITIONS[chartData.cond] } > */}
 
                 <LabelList dataKey="temF" position="bottom" />
                 </Scatter>

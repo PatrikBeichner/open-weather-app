@@ -13,6 +13,7 @@ import { styled } from '@mui/material/styles';
 import { IconButton } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Collapse } from '@mui/material';
+import HourlyWeather from './hourlyWeather';
 import {
   WeatherThunderstorm,
   WeatherDrizzle,
@@ -100,7 +101,7 @@ export default function CurrentWeather({ currentData, hourlyData }) {
             <Card>
               <CardContent sx={{ display: 'flex' }}>
                 <CardMedia component="img" image={icon} alt={currentData.weather[0].main} />
-                {CONDITIONS[conSearch]}                
+                {CONDITIONS[conSearch]}
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     {Math.round(currentData.temp)}&deg;F
@@ -130,6 +131,7 @@ export default function CurrentWeather({ currentData, hourlyData }) {
 
               <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
+                  <HourlyWeather hourlyData={hourlyData} />
                   <Typography paragraph>dewpoint: {currentData.dew_point}:</Typography>
                   <Typography paragraph>uv index: {currentData.uvi}</Typography>
                   <Typography paragraph>wind speed: {currentData.wind_speed}</Typography>

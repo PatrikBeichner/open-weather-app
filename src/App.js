@@ -8,6 +8,7 @@ import AlertsDialog from './alertDialog';
 import AlertAccordion from './alertAccordion';
 import HourlyWeather from './hourlyWeather';
 import RecipeReviewCard from './recipeReviewCard';
+import InputComponent from './inputComponent';
 
 function App() {
 
@@ -80,6 +81,7 @@ function App() {
         <p>lat: {lat}</p>
         <p>lon: {lon}</p>
       </div> */}
+        <InputComponent />
         {/* {forecast.alerts[0] ? <Alerts alerts={forecast.alerts} /> : null} */}
         {/* {forecast.alerts[0] ? <AlertsDialog alerts={forecast.alerts} /> : null} */}
         {forecast.alerts[0] ? <AlertAccordion alerts={forecast.alerts} /> : null}

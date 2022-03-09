@@ -15,13 +15,15 @@ import { TextField, Select, FormControl, MenuItem, InputLabel, Box } from '@mui/
 function App() {
 
 
-  const [lat, setLat] = useState();
-  const [lon, setLon] = useState();
+  //const [lat, setLat] = useState();
+  //const [lon, setLon] = useState();
   const [city, setCity] = useState();
 
   const [country, setCountry] = useState('US')
   const [zip, setZip] = useState('')
   const [location, setLocation] = useState({})
+  let lat = location.lat
+  let lon = location.lon
 
   //const [forecast, setForecast] = useState([])
 
@@ -50,6 +52,12 @@ function App() {
   }, [apiGeoUrl])
 
   console.log(location)
+  console.log('this is latlon: ' + lat + lon)
+
+  
+
+
+
 
   //get location via browser geolocation
 //   useEffect(() => {
@@ -105,7 +113,7 @@ function App() {
         <p>lat: {lat}</p>
         <p>lon: {lon}</p>
       </div> */}
-        <Box component='form'>
+      <Box component='form'>
         <TextField
           id='outlined-basic'
           label='zip/post code'
@@ -120,7 +128,7 @@ function App() {
           value={country}
           onChange={handleCountry}
           helperText='Select country'>
-              {COUNTRIES.map((country) => (
+            {COUNTRIES.map((country) => (
                   <MenuItem key={country.countryCode} value={country.alpha2}>
                       {country.name}
                     </MenuItem>

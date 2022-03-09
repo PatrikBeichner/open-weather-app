@@ -93,7 +93,7 @@ export default function HourlyWeather({ hourlyData }) {
                 <YAxis type="number" dataKey="temF" name="temp" unit="&deg;F" />
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
                 {/* <Scatter name="Hourly Temp" data={chartData} shape={CONDITIONS[chartData.cond]}> */}
-                <Scatter name="Hourly Temp" data={chartData} shape={ CONDITIONS[chartData.cond]} >
+                <Scatter name="Hourly Temp"  data={chartData} shape={ CONDITIONS[chartData.cond]} >
                 {/* <Scatter name="Hourly Temp" data={chartData} shape={ CONDITIONS[chartData.cond] } > */}
 
                 <LabelList dataKey="temF" position="bottom" />

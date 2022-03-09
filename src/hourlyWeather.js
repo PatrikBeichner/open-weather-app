@@ -14,7 +14,44 @@ import {
     
   
 
-function RenderIcon({ con }) {
+function RenderIcon({ data }) {
+
+    const CONDITIONS = {
+        Clouds: <WeatherCloudy />,
+        Clear: <WeatherSunny />,
+        Tornado: <WeatherFog />,
+        Squall: <WeatherFog />,
+        Ash: <WeatherFog />,
+        Dust: <WeatherFog />,
+        Sand: <WeatherFog />,
+        Fog: <WeatherFog />,
+        Haze: <WeatherFog />,
+        Smoke: <WeatherFog />,
+        Mist: <WeatherFog />,
+        Snow: <WeatherSnow />,
+        Rain: <WeatherRain />,
+        Drizzle: <WeatherDrizzle />,
+        Thunderstorm: <WeatherThunderstorm />,
+    };
+    const iconUrl = 'http://openweathermap.org/img/wn/';
+
+        //console.log(data)
+
+    return (
+        <>
+            {data.map(( weather, i )=>{
+
+                let icon = `${iconUrl}${weather.cond}@2x.png`
+                console.log(icon)
+                return <img src={icon} key={i} alt={'weather'} />
+
+            })}
+        </>
+    )
+    //return null
+}
+
+export default function HourlyWeather({ hourlyData }) {
 
     // const CONDITIONS = {
     //     Clouds: <WeatherCloudy />,
@@ -34,40 +71,12 @@ function RenderIcon({ con }) {
     //     Thunderstorm: <WeatherThunderstorm />,
     // };
 
-    let icon = {con}
-    console.log(con)
-    
-    //console.log( icon )
-
-    return null
-}
-
-export default function HourlyWeather({ hourlyData }) {
-
-    const CONDITIONS = {
-        Clouds: <WeatherCloudy />,
-        Clear: <WeatherSunny />,
-        Tornado: <WeatherFog />,
-        Squall: <WeatherFog />,
-        Ash: <WeatherFog />,
-        Dust: <WeatherFog />,
-        Sand: <WeatherFog />,
-        Fog: <WeatherFog />,
-        Haze: <WeatherFog />,
-        Smoke: <WeatherFog />,
-        Mist: <WeatherFog />,
-        Snow: <WeatherSnow />,
-        Rain: <WeatherRain />,
-        Drizzle: <WeatherDrizzle />,
-        Thunderstorm: <WeatherThunderstorm />,
-    };
-
     //let cond
 
     let chartData = hourlyData.slice(0, 13).map(({ dt, temp, weather }) => {
         let time = new Date(dt * 1e3).toLocaleTimeString('en-US', { hour12: false, hour: '2-digit' },)
         let temF = Math.round(temp);
-        let cond = weather[0].main;
+        let cond = weather[0].icon;
         return { time, temF, cond }})
 
 //    let conSearch = `${hourlyData.weather[0].main}`;
@@ -93,7 +102,7 @@ export default function HourlyWeather({ hourlyData }) {
                 <YAxis type="number" dataKey="temF" name="temp" unit="&deg;F" />
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
                 {/* <Scatter name="Hourly Temp" data={chartData} shape={CONDITIONS[chartData.cond]}> */}
-                <Scatter name="Hourly Temp"  data={chartData} shape={ CONDITIONS[chartData.cond]} >
+                <Scatter name="Hourly Temp"  data={chartData} shape={ <RenderIcon data={chartData} />} >
                 {/* <Scatter name="Hourly Temp" data={chartData} shape={ CONDITIONS[chartData.cond] } > */}
 
                 <LabelList dataKey="temF" position="bottom" />

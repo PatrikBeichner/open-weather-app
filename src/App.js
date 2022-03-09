@@ -20,7 +20,7 @@ function App() {
   const [city, setCity] = useState();
 
   const [country, setCountry] = useState('US')
-  const [zip, setZip] = useState('')
+  const [zip, setZip] = useState('15201')
   const [location, setLocation] = useState({})
   let lat = location.lat
   let lon = location.lon
@@ -115,19 +115,20 @@ function App() {
       </div> */}
       <Box component='form'>
         <TextField
-          id='outlined-basic'
+          id='standard-basic'
           label='zip/post code'
-          variant='outlined'
+          variant='standard'
           value={zip}
           onChange={handleZip}
         />
         <TextField
-          id='outlined-select-country'
+          id='standard-select-country'
+          variant='standard'
           select
-          label='select'
+          label='select country'
           value={country}
           onChange={handleCountry}
-          helperText='Select country'>
+        >
             {COUNTRIES.map((country) => (
                   <MenuItem key={country.countryCode} value={country.alpha2}>
                       {country.name}

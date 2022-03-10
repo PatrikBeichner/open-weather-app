@@ -12,6 +12,8 @@ import { Paper } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { IconButton } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { Collapse } from '@mui/material';
 import HourlyWeather from './hourlyWeather';
 import {
@@ -53,7 +55,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function CurrentWeather({ currentData, hourlyData }) {
+export default function CurrentWeather({ currentData, hourlyData, low, hi }) {
   const [expanded, setExpanded] = useState(false);
 
   const iconUrl = 'http://openweathermap.org/img/wn/';
@@ -104,10 +106,16 @@ export default function CurrentWeather({ currentData, hourlyData }) {
                 {/* {CONDITIONS[conSearch]} */}
                 <CardMedia>
                   <img src={icon} alt={currentData.weather[0].main} />
+                  <Typography gutterBottom variant="h5" component="div">
+                    {currentData.weather[0].main}
+                  </Typography>
                 </CardMedia>
                 <CardContent sx={{ border: 1, borderColor: 'red'}}>
                   <Typography gutterBottom variant="h5" component="div">
                     {Math.round(currentData.temp)}&deg;F
+                  </Typography>
+                  <Typography gutterBottom variant="subtitle1" component="div">
+                    <ArrowUpwardIcon /> {Math.round(hi)}&deg;F <ArrowDownwardIcon />{Math.round(low)}&deg;F
                   </Typography>
                                 {/* <Typography gutterBottom variant="h5" component="div">
                                   {currentData.weather[0].main}
@@ -115,9 +123,7 @@ export default function CurrentWeather({ currentData, hourlyData }) {
                   <Typography variant="body2" color="text.secondary">
                     feels like: {Math.round(currentData.feels_like)}&deg;F
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    humidity: {currentData.humidity}&#37;
-                  </Typography>
+                  
                   <Typography variant="body2" color="text.secondary">
                     sunrise: {new Date(currentData.sunrise * 1000).toLocaleTimeString('en-IN')};
                   </Typography>
@@ -126,8 +132,9 @@ export default function CurrentWeather({ currentData, hourlyData }) {
                   </Typography>
                 </CardContent>
                 <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    {currentData.weather[0].main}
+                
+                  <Typography variant="body2" color="text.secondary">
+                    humidity: {currentData.humidity}&#37;
                   </Typography>
                   <Typography variant="body2" color="text.secondary" >dewpoint: {currentData.dew_point}:</Typography>
                   <Typography variant="body2" color="text.secondary" >uv index: {currentData.uvi}</Typography>

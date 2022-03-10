@@ -148,7 +148,7 @@ function App() {
         {/* {forecast.alerts[0] ? <Alerts alerts={forecast.alerts} /> : null} */}
         {/* {forecast.alerts[0] ? <AlertsDialog alerts={forecast.alerts} /> : null} */}
         {forecast.alerts[0] ? <AlertAccordion alerts={forecast.alerts} /> : null}
-        <CurrentWeather currentData={forecast.current} hourlyData={forecast.hourly}/>
+        <CurrentWeather currentData={forecast.current} hourlyData={forecast.hourly} low={forecast.daily[0].temp.min} hi={forecast.daily[0].temp.max}/>
         {/* <RecipeReviewCard /> */}
         <DailyWeather dailyData={forecast.daily} />
         {/* <HourlyWeather hourlyData={forecast.hourly} max={forecast.daily[0].temp.max} min={forecast.daily[0].temp.min}/> */}

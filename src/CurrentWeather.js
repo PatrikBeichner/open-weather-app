@@ -13,6 +13,7 @@ import { styled } from '@mui/material/styles';
 import { IconButton } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
+import { ArrowDropUp } from '@mui/icons-material';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { Collapse } from '@mui/material';
 import HourlyWeather from './hourlyWeather';
@@ -136,11 +137,12 @@ export default function CurrentWeather({ currentData, hourlyData, low, hi }) {
                   <Typography variant="body2" color="text.secondary">
                     humidity: {currentData.humidity}&#37;
                   </Typography>
-                  <Typography variant="body2" color="text.secondary" >dewpoint: {currentData.dew_point}:</Typography>
-                  <Typography variant="body2" color="text.secondary" >uv index: {currentData.uvi}</Typography>
-                  <Typography variant="body2" color="text.secondary" >wind speed: {currentData.wind_speed}</Typography>
-                  <Typography variant="body2" color="text.secondary" >wind direction: {currentData.wind_deg}</Typography>
-                  <Typography variant="body2" color="text.secondary" >pressure: {currentData.pressure}</Typography>
+                  <Typography variant="body2" color="text.secondary" >dewpoint: {Math.round(currentData.dew_point)}&deg;F</Typography>
+                  <Typography variant="body2" color="text.secondary" >uv index: {Math.round(currentData.uvi)}</Typography>
+                  <Typography variant="body2" color="text.secondary" >
+                    wind: {Math.round(currentData.wind_speed)}mph <ArrowDropUp style={{ fontSize: '2rem', transform: `rotate(${currentData.wind_deg}deg)`}} />
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" >pressure: {currentData.pressure} mbar</Typography>
                 </CardContent>
               </CardContent>
               <CardActions disableSpacing>

@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
+import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 
 export default function DailyWeather({ dailyData }) {
@@ -43,8 +45,8 @@ export default function DailyWeather({ dailyData }) {
                                 {daily.weather[0].main}
                             </Typography>
                             <Typography gutterBottom variant="body2" component="div">
-                                max: {daily.temp.max.toFixed(0)}&deg;F
-                                min: {daily.temp.min.toFixed(0)}&deg;F
+                                <ArrowUpwardIcon />{daily.temp.max.toFixed(0)}&deg;F
+                                <ArrowDownwardIcon />{daily.temp.min.toFixed(0)}&deg;F
                             </Typography>
                             <Typography variant="body2" color="text.secondary">
                                 feels like: {daily.feels_like.day.toFixed(0)}&deg;F

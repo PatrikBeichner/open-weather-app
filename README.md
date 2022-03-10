@@ -1,18 +1,21 @@
-# Getting Started with Create React App
+# React Weather App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A simple in design weather app showing you the weather info you need in a clear and concise package
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- current weather with collapsible 12 hour temperature graph
+- five day forecast with basic info
 
-### `npm start`
+## Basic setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Fork the repo and use 'master' branch
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+install dependencies:
+```
+npm install
+```
+
 
 ### `npm test`
 

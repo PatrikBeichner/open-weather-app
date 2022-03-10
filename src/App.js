@@ -10,10 +10,18 @@ import AlertAccordion from './alertAccordion';
 import HourlyWeather from './hourlyWeather';
 import RecipeReviewCard from './recipeReviewCard';
 import InputComponent from './inputComponent';
-import { TextField, Select, FormControl, MenuItem, InputLabel, Box } from '@mui/material'
+import { IconButton } from '@mui/material';
+import { TextField, Select, FormControl, MenuItem, InputLabel, Box, useTheme, ThemeProvider, createTheme } from '@mui/material';
+import { Brightness4TwoTone, Brightness7TwoTone } from '@mui/icons-material';
+
+const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
+
+
 
 function App() {
-
+  //const theme = useTheme();
+  
+  
 
   //const [lat, setLat] = useState();
   //const [lon, setLon] = useState();
@@ -136,6 +144,7 @@ function App() {
               ))}
         </TextField>
     </Box>
+    
         {/* {forecast.alerts[0] ? <Alerts alerts={forecast.alerts} /> : null} */}
         {/* {forecast.alerts[0] ? <AlertsDialog alerts={forecast.alerts} /> : null} */}
         {forecast.alerts[0] ? <AlertAccordion alerts={forecast.alerts} /> : null}

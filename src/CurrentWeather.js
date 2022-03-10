@@ -95,14 +95,14 @@ export default function CurrentWeather({ currentData, hourlyData }) {
             <p>{currentData.weather[0].main}</p>
             <img src={`${iconUrl}${currentData.weather[0].icon}@2x.png`} alt={currentData.weather[0].main}/>
         </div> */}
-        {/* <Box display='center' > */}
-        <Grid container justifyContent="center" alignItems="center" spacing={2}>
+        <Box display='center' >
+        <Grid container justifyContent="center" alignItems="center" spacing={10} sx={{ border: 1, borderColor: 'green'}}>
           <Grid item xs={10} lg={6}>
             <Card>
-              <CardContent sx={{ display: 'flex' }}>
+              <CardContent sx={{ display: 'flex', flexDirection: {xs: 'column', md: 'row'}, border: 1, borderColor: 'pink' }}>
                 <CardMedia component="img" image={icon} alt={currentData.weather[0].main} />
-                {CONDITIONS[conSearch]}
-                <CardContent>
+                {/* {CONDITIONS[conSearch]} */}
+                <CardContent sx={{ border: 1, borderColor: 'red'}}>
                   <Typography gutterBottom variant="h5" component="div">
                     {Math.round(currentData.temp)}&deg;F
                   </Typography>
@@ -142,7 +142,7 @@ export default function CurrentWeather({ currentData, hourlyData }) {
             </Card>
           </Grid>
         </Grid>
-        {/* </Box> */}
+        </Box>
       </>
     );
   } else {

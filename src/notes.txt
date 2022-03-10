@@ -1,0 +1,32 @@
+dark mode stuff that didnt work?
+const [mode, setMode] = useState('light')
+
+  const colorMode = React.useContext(ColorModeContext);
+
+   const ToggleColorMode = () => {
+     colorMode = React.useMemo(
+      () => ({
+        toggleColorMode: () => {
+          setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'))
+        },
+      }),
+      [],
+    );
+    }
+
+  const theme = React.useMemo(
+    () => 
+      createTheme({
+        pallette: {
+          mode,
+        },
+      }),
+      [mode],
+  );
+
+
+  <Box>
+    <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color='inherit'>
+            {theme.pallete.mode === 'dark' ? <Brightness7TwoTone /> : <Brightness4TwoTone />}
+        </IconButton>
+    </Box>

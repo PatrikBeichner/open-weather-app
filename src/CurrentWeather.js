@@ -100,15 +100,18 @@ export default function CurrentWeather({ currentData, hourlyData }) {
           <Grid item xs={10} lg={6}>
             <Card>
               <CardContent sx={{ display: 'flex', flexDirection: {xs: 'column', md: 'row'}, border: 1, borderColor: 'pink' }}>
-                <CardMedia component="img" image={icon} alt={currentData.weather[0].main} />
+                {/* <CardMedia component="img" height='140'image={icon} alt={currentData.weather[0].main} /> */}
                 {/* {CONDITIONS[conSearch]} */}
+                <CardMedia>
+                  <img src={icon} alt={currentData.weather[0].main} />
+                </CardMedia>
                 <CardContent sx={{ border: 1, borderColor: 'red'}}>
                   <Typography gutterBottom variant="h5" component="div">
                     {Math.round(currentData.temp)}&deg;F
                   </Typography>
-                  <Typography gutterBottom variant="h5" component="div">
-                    {currentData.weather[0].main}
-                  </Typography>
+                                {/* <Typography gutterBottom variant="h5" component="div">
+                                  {currentData.weather[0].main}
+                                </Typography> */}
                   <Typography variant="body2" color="text.secondary">
                     feels like: {Math.round(currentData.feels_like)}&deg;F
                   </Typography>
@@ -122,6 +125,16 @@ export default function CurrentWeather({ currentData, hourlyData }) {
                     sunset: {new Date(currentData.sunset * 1000).toLocaleTimeString('en-IN')};
                   </Typography>
                 </CardContent>
+                <CardContent>
+                <Typography gutterBottom variant="h5" component="div">
+                    {currentData.weather[0].main}
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary" >dewpoint: {currentData.dew_point}:</Typography>
+                  <Typography variant="body2" color="text.secondary" >uv index: {currentData.uvi}</Typography>
+                  <Typography variant="body2" color="text.secondary" >wind speed: {currentData.wind_speed}</Typography>
+                  <Typography variant="body2" color="text.secondary" >wind direction: {currentData.wind_deg}</Typography>
+                  <Typography variant="body2" color="text.secondary" >pressure: {currentData.pressure}</Typography>
+                </CardContent>
               </CardContent>
               <CardActions disableSpacing>
                 <ExpandMore expand={expanded} onClick={handleExpandClick} aria-expanded={expanded} aria-label="show more">
@@ -132,11 +145,6 @@ export default function CurrentWeather({ currentData, hourlyData }) {
               <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
                   <HourlyWeather hourlyData={hourlyData} />
-                  <Typography paragraph>dewpoint: {currentData.dew_point}:</Typography>
-                  <Typography paragraph>uv index: {currentData.uvi}</Typography>
-                  <Typography paragraph>wind speed: {currentData.wind_speed}</Typography>
-                  <Typography paragraph>wind gusts: {currentData.wind_gust}</Typography>
-                  <Typography>pressure: {currentData.pressure}</Typography>
                 </CardContent>
               </Collapse>
             </Card>

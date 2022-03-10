@@ -84,7 +84,7 @@ export default function HourlyWeather({ hourlyData }) {
 //console.log(chartData)
   return (
     <>
-        <h1>hopefully a chart is here someday</h1>
+        <h3>next 12 hours:</h3>
         <Box sx={{ width: 800, height: 500 }}>
         <ResponsiveContainer width='99%' height='99%'>
             <ScatterChart

@@ -36,11 +36,9 @@ export default function DailyWeather({ dailyData }) {
                             <Typography gutterBottom variant="h5" component="div">
                                 {daily.temp.day.toFixed(0)}&deg;F
                             </Typography>
-                            <CardMedia
-                                component="img"
-                                height="140"
-                                image={icon}
-                                alt={daily.weather[0].main} />
+                            <CardMedia>
+                                <img src={icon} alt={daily.weather[0].main} />
+                            </CardMedia>
                             <Typography gutterBottom variant="h5" component="div">
                                 {daily.weather[0].main}
                             </Typography>

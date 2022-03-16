@@ -102,7 +102,7 @@ export default function CurrentWeather({ currentData, hourlyData, low, hi }) {
         <Grid container justifyContent="center" alignItems="center" spacing={10} sx={{ border: 1, borderColor: 'green'}}>
           <Grid item xs={10} lg={6}>
             <Card>
-              <CardContent sx={{ display: 'flex', flexDirection: {xs: 'column', md: 'row'}, border: 1, borderColor: 'pink' }}>
+              <CardContent sx={{ display: 'flex', flexDirection: {xs: 'column', md: 'row'}, justifyContent: 'center', border: 1, borderColor: 'pink' }}>
                 {/* <CardMedia component="img" height='140'image={icon} alt={currentData.weather[0].main} /> */}
                 {/* {CONDITIONS[conSearch]} */}
                 <CardMedia>

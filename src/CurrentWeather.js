@@ -98,7 +98,7 @@ export default function CurrentWeather({ currentData, hourlyData, low, hi }) {
             <p>{currentData.weather[0].main}</p>
             <img src={`${iconUrl}${currentData.weather[0].icon}@2x.png`} alt={currentData.weather[0].main}/>
         </div> */}
-        <Box display='center' >
+        <Box display='center' sx={{m: 2}}>
         <Grid container justifyContent="center" alignItems="center" spacing={10} sx={{ border: 1, borderColor: 'green'}}>
           <Grid item xs={10} lg={6}>
             <Card>

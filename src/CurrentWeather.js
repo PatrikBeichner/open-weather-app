@@ -99,10 +99,11 @@ export default function CurrentWeather({ currentData, hourlyData, low, hi }) {
             <img src={`${iconUrl}${currentData.weather[0].icon}@2x.png`} alt={currentData.weather[0].main}/>
         </div> */}
         <Box display='center' sx={{m: 2}}>
-        <Grid container justifyContent="center" alignItems="center" spacing={10} sx={{ border: 1, borderColor: 'green'}}>
-          <Grid item xs={10} lg={6}>
+                                  {/* sx={{ border: 1, borderColor: 'green'}} */}
+        <Grid container justifyContent="center" alignItems="center" spacing={10} >
+          <Grid item xs={10} lg={6} sx={{width: '100%'}}>
             <Card>
-              <CardContent sx={{ display: 'flex', flexDirection: {xs: 'column', md: 'row'}, justifyContent: 'center', border: 1, borderColor: 'pink' }}>
+              <CardContent sx={{ display: 'flex', flexDirection: {xs: 'column', md: 'row'}, justifyContent: 'center' }}>
                 {/* <CardMedia component="img" height='140'image={icon} alt={currentData.weather[0].main} /> */}
                 {/* {CONDITIONS[conSearch]} */}
                 <CardMedia>
@@ -111,7 +112,7 @@ export default function CurrentWeather({ currentData, hourlyData, low, hi }) {
                     {currentData.weather[0].main}
                   </Typography>
                 </CardMedia>
-                <CardContent sx={{ border: 1, borderColor: 'red'}}>
+                <CardContent>
                   <Typography gutterBottom variant="h5" component="div">
                     {Math.round(currentData.temp)}&deg;F
                   </Typography>
@@ -145,7 +146,7 @@ export default function CurrentWeather({ currentData, hourlyData, low, hi }) {
                   <Typography variant="body2" color="text.secondary" >pressure: {currentData.pressure} mbar</Typography>
                 </CardContent>
               </CardContent>
-              <CardActions disableSpacing>
+              <CardActions wrap={"nowrap"}>
                 <ExpandMore expand={expanded} onClick={handleExpandClick} aria-expanded={expanded} aria-label="show more">
                   <ExpandMoreIcon />
                 </ExpandMore>

@@ -25,7 +25,7 @@ export default function DailyWeather({ dailyData }) {
 
                 return (
                 <Grid item xs={10} sm={6} md={2} key={i} >
-                    <Card >
+                    <Card sx={{ ':hover': { boxShadow: 20,}}}>
                         <CardContent sx={{ display: 'flex', flexDirection: {xs: 'column'} }}>
                             <Typography gutterBottom variant="h5" component="div">
                                 {/* {new Date(daily.dt * 1000).toLocaleDateString('en-IN')} */}

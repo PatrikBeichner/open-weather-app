@@ -25,13 +25,14 @@ function App() {
 
   //const [lat, setLat] = useState();
   //const [lon, setLon] = useState();
-  const [city, setCity] = useState();
+  //const [city, setCity] = useState();
 
   const [country, setCountry] = useState('US')
   const [zip, setZip] = useState('15201')
   const [location, setLocation] = useState({})
-  let lat = location.lat
-  let lon = location.lon
+  let lat = location.lat;
+  let lon = location.lon;
+  let city = location.city;
 
   //const [forecast, setForecast] = useState([])
 
@@ -63,7 +64,17 @@ function App() {
   console.log('this is latlon: ' + lat + lon)
 
   
+  const fetchWeather = async (latitude, longitude) =>{
+    let response = await fetch(apiUrl);
+    let body = await response.json();
 
+    if (body.cod == 404) {
+      setErrors(body.message);
+    } else {
+      
+    }
+
+  }
 
 
 
@@ -79,16 +90,19 @@ function App() {
 //           setLat(position.coords.latitude);
 //           setLon(position.coords.longitude);
 //         });
+//       }
+//     }
+//   }, [lat, lon])
 
-//         // await fetch(`${process.env.REACT_APP_CITY_URL}?lat=${lat}&lon=${lon}&limit=1&appid=${process.env.REACT_APP_API_KEY}`)
-//         //   .then(res=>res.json())
-//         //   .then(result => {
-//         //     setCity(result.name)
-//         //     console.log(city)
-//         //   })
+        // await fetch(`${process.env.REACT_APP_CITY_URL}?lat=${lat}&lon=${lon}&limit=1&appid=${process.env.REACT_APP_API_KEY}`)
+        //   .then(res=>res.json())
+        //   .then(result => {
+        //     setCity(result.name)
+        //     console.log(city)
+        //   })
 
-//       // console.log("Latitude is: ", lat)
-//       // console.log("Longitude is: ", lon)
+      // console.log("Latitude is: ", lat)
+      // console.log("Longitude is: ", lon)
 //       }
 //        fetch(`${process.env.REACT_APP_API_URL}?lat=${lat}&lon=${lon}&units=imperial&APPID=${process.env.REACT_APP_API_KEY}`)
 //         .then(res=>res.json())
@@ -122,6 +136,7 @@ function App() {
         <p>lon: {lon}</p>
       </div> */}
       <Box component='form'>
+        {/* Change to on submit */}
         <TextField
           id='standard-basic'
           label='zip/post code'

@@ -1,5 +1,5 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import CurrentWeather from './CurrentWeather';
 import { WEATHER } from './shared/weather';
 import { COUNTRIES } from './shared/countryCodes'
@@ -16,7 +16,27 @@ import { Brightness4TwoTone, Brightness7TwoTone } from '@mui/icons-material';
 
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
+export function useDebounce(value, time) {
+  const [_value, setValue] = useState(value);
+  const mountedRef = useRef(false);
+  const timeRef = useRef(null);
 
+  const cancel = () => window.clearTimeout(timeRef.current)
+
+  useEffect(() => {
+    cancel();
+    timeRef.current = window.setTimeout(()=>{
+      setValue(value);
+      }, time);
+}, [value]);
+
+useEffect(() => {
+  mountedRef.current = true;
+  return cancel;
+  }, []);
+
+  return [_value, cancel];
+}
 
 function App() {
   //const theme = useTheme();

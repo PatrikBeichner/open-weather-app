@@ -4,12 +4,12 @@ import CurrentWeather from './CurrentWeather';
 import { WEATHER } from './shared/weather';
 import { COUNTRIES } from './shared/countryCodes'
 import DailyWeather from './DailyWeather';
-import Alerts from './alert';
-import AlertsDialog from './alertDialog';
+//import Alerts from './alert';
+//import AlertsDialog from './alertDialog';
 import AlertAccordion from './alertAccordion';
-import HourlyWeather from './hourlyWeather';
-import RecipeReviewCard from './recipeReviewCard';
-import InputComponent from './inputComponent';
+//import HourlyWeather from './hourlyWeather';
+//import RecipeReviewCard from './recipeReviewCard';
+//import InputComponent from './inputComponent';
 import { IconButton } from '@mui/material';
 import { TextField, Select, FormControl, MenuItem, InputLabel, Box, useTheme, ThemeProvider, createTheme } from '@mui/material';
 import { Brightness4TwoTone, Brightness7TwoTone } from '@mui/icons-material';
@@ -41,7 +41,9 @@ useEffect(() => {
 function App() {
   //const theme = useTheme();
   
-  
+  let weatherUrl = '/api/weather?';
+  let reverseUrl = '/api/reverse?';
+  let geoUrl = '/api/location?'
 
   //const [lat, setLat] = useState();
   //const [lon, setLon] = useState();
@@ -52,7 +54,7 @@ function App() {
   const [location, setLocation] = useState({})
   let lat = location.lat;
   let lon = location.lon;
-  let city = location.city;
+  let city = location.name;
 
   //const [forecast, setForecast] = useState([])
 
@@ -63,7 +65,8 @@ function App() {
 
   const apiKey = process.env.REACT_APP_API_KEY;
   const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly&appid=${apiKey}`;
-  const apiGeoUrl = `http://api.openweathermap.org/geo/1.0/zip?zip=${zip},${country}&appid=${apiKey}`
+  const apiGeoUrl = `http://api.openweathermap.org/geo/1.0/zip?zip=${zip},${country}&appid=${apiKey}`;
+  
 
   const handleCountry = (event) => {
     setCountry(event.target.value)
@@ -75,26 +78,133 @@ function App() {
   }
 
   useEffect(() => {
-    fetch(apiGeoUrl)
+    const fetchCords = async () => {
+      console.log(`${geoUrl}zip=${zip}&country=${country}`)
+    fetch(`${geoUrl}zip=${zip}&country=${country}`)
       .then((res) => res.json())
       .then((data) => setLocation(data));
-  }, [apiGeoUrl])
+  } 
+    const fetchWeather = async () => {
+      console.log(`${weatherUrl}latitude=${location.lat}&longitude=${location.lon}`)
+      fetch(`${weatherUrl}latitude=${location.lat}&longitude=${location.lon}`)
+      .then((res) => res.json())
+      .then((data2) => setForecast(data2));
+    }
+  fetchCords()
+  .catch(console.error);
+
+  fetchWeather()
+  .catch(console.error);
+},[zip, country, geoUrl, weatherUrl])
+
+  // useEffect(() => {
+  //   const fetchWeather = async () => {
+  //     fetch(`${weatherUrl}latitude=${lat}&longitude=${lon}`, {
+  //       headers : {
+  //       'Content-Type': 'application/json',
+  //       'Accept': 'application/json'
+  //       }
+  //     })
+  //     .then(res=>res.json())
+  //     .then(data=> {
+  //       setForecast(data)
+  //       //console.log(data)
+  //     })
+  //   }
+  // fetchWeather()
+  // .catch(console.error);
+    
+  // }, [location])
+
+
 
   console.log(location)
   console.log('this is latlon: ' + lat + lon)
+  console.log('this is city: ' + city)
 
   
-  const fetchWeather = async (latitude, longitude) =>{
-    let response = await fetch(apiUrl);
-    let body = await response.json();
+  // const fetchWeather = async (latitude, longitude) =>{
+  //   let response = await fetch(apiUrl);
+  //   let body = await response.json();
 
-    if (body.cod == 404) {
-      setErrors(body.message);
-    } else {
+  //   if (body.cod == 404) {
+  //     setErrors(body.message);
+  //   } else {
       
-    }
+  //   }
 
-  }
+  // }
+
+  //get location via browser geolocation
+// useEffect(() => {
+//   const controller = new AbortController();
+  
+//       const fetchData = async () => {
+//       if (!navigator.geolocation) {
+//         setErrors(errors => [...errors, "Location not supported, please enter a zip code and country"]);
+//       } else {
+//           navigator.geolocation.getCurrentPosition(function(position) {
+//             setLat(position.coords.latitude);
+//             setLon(position.coords.longitude);
+//           });
+//           console.log("pasted stuff")
+//           console.log(`${weatherUrl}latitude=${lat}&longitude=${lon}`);
+//           await fetch(`${weatherUrl}latitude=${lat}&longitude=${lon}`, {
+//             headers : { 
+//               'Content-Type': 'application/json',
+//               'Accept': 'application/json'
+//              }
+//           })
+//           .then(res=>res.json())
+//           .then(result => {
+//             setForecast(result)
+//             console.log(result)
+//             // console.log(`${process.env.API_URL_WEATHER}latitude=${lat}&longitude=${lon}`)
+//           })
+
+//           await fetch(`${reverseUrl}latitude=${lat}&longitude=${lon}`, {
+//             headers : {
+//               'Content-Type': 'application/json',
+//               'Accept': 'application/json'
+//             }
+//           })
+//           .then(res=>res.json())
+//           .then(result => {
+//             setCity(result.name)
+//             console.log(result[0].name)
+//           })
+//           // await fetch(`${process.env.API_URL_LOCATION}zip=${zip}&country=${country}`)
+//           //   .then(res=>res.json())
+//           //   .then(result => {
+//           //     setCity(result.name)
+//           //     console.log(city)
+//           //   })
+  
+//         console.log("Latitude is: ", lat)
+//         console.log("Longitude is: ", lon)
+//         }
+//         //  fetch(`${process.env.API_URL_WEATHER}latitude=${lat}&longitude=${lon}`)
+//         //   .then(res=>res.json())
+//         //   .then(result => {
+//         //     setForecast(result)
+//         //     console.log(result)
+//         //     console.log(`${process.env.API_URL_WEATHER}latitude=${lat}&longitude=${lon}`)
+//         //   })
+//         // .catch((err) => {
+//         //   if (err.name === 'AbortError') {
+//         //     console.log('successfully aborted');
+//         //   } else {
+//         //     //handle error here
+//         //   }
+//         // })
+//         return () => {
+//           controller.abort();
+//         }
+//         }
+      
+//       fetchData();
+      
+//     }, [lat, lon]);
 
 
 

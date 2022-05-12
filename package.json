@@ -2,6 +2,7 @@
   "name": "open-weather-app",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "@emotion-icons/fluentui-system-regular": "^3.15.0",
     "@emotion/react": "^11.8.1",
@@ -13,6 +14,7 @@
     "@testing-library/user-event": "^13.5.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-error-boundary": "^3.1.4",
     "react-scripts": "5.0.0",
     "recharts": "^2.1.9",
     "web-vitals": "^2.1.4"

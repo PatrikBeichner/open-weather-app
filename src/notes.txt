@@ -30,3 +30,160 @@ const [mode, setMode] = useState('light')
             {theme.pallete.mode === 'dark' ? <Brightness7TwoTone /> : <Brightness4TwoTone />}
         </IconButton>
     </Box>
+
+
+    Deleted stuff
+
+
+      // const fetchWeather = async (latitude, longitude) =>{
+  //   let response = await fetch(apiUrl);
+  //   let body = await response.json();
+
+  //   if (body.cod == 404) {
+  //     setErrors(body.message);
+  //   } else {
+      
+  //   }
+
+  // }
+
+  //get location via browser geolocation
+// useEffect(() => {
+//   const controller = new AbortController();
+  
+//       const fetchData = async () => {
+//       if (!navigator.geolocation) {
+//         setErrors(errors => [...errors, "Location not supported, please enter a zip code and country"]);
+//       } else {
+//           navigator.geolocation.getCurrentPosition(function(position) {
+//             setLat(position.coords.latitude);
+//             setLon(position.coords.longitude);
+//           });
+//           console.log("pasted stuff")
+//           console.log(`${weatherUrl}latitude=${lat}&longitude=${lon}`);
+//           await fetch(`${weatherUrl}latitude=${lat}&longitude=${lon}`, {
+//             headers : { 
+//               'Content-Type': 'application/json',
+//               'Accept': 'application/json'
+//              }
+//           })
+//           .then(res=>res.json())
+//           .then(result => {
+//             setForecast(result)
+//             console.log(result)
+//             // console.log(`${process.env.API_URL_WEATHER}latitude=${lat}&longitude=${lon}`)
+//           })
+
+//           await fetch(`${reverseUrl}latitude=${lat}&longitude=${lon}`, {
+//             headers : {
+//               'Content-Type': 'application/json',
+//               'Accept': 'application/json'
+//             }
+//           })
+//           .then(res=>res.json())
+//           .then(result => {
+//             setCity(result.name)
+//             console.log(result[0].name)
+//           })
+//           // await fetch(`${process.env.API_URL_LOCATION}zip=${zip}&country=${country}`)
+//           //   .then(res=>res.json())
+//           //   .then(result => {
+//           //     setCity(result.name)
+//           //     console.log(city)
+//           //   })
+  
+//         console.log("Latitude is: ", lat)
+//         console.log("Longitude is: ", lon)
+//         }
+//         //  fetch(`${process.env.API_URL_WEATHER}latitude=${lat}&longitude=${lon}`)
+//         //   .then(res=>res.json())
+//         //   .then(result => {
+//         //     setForecast(result)
+//         //     console.log(result)
+//         //     console.log(`${process.env.API_URL_WEATHER}latitude=${lat}&longitude=${lon}`)
+//         //   })
+//         // .catch((err) => {
+//         //   if (err.name === 'AbortError') {
+//         //     console.log('successfully aborted');
+//         //   } else {
+//         //     //handle error here
+//         //   }
+//         // })
+//         return () => {
+//           controller.abort();
+//         }
+//         }
+      
+//       fetchData();
+      
+//     }, [lat, lon]);
+
+
+
+  //get location via browser geolocation
+//   useEffect(() => {
+// const controller = new AbortController();
+
+//     const fetchData = async () => {
+//     if (!navigator.geolocation) {
+//       setErrors(errors => [...errors, "Location not supported"]);
+//     } else {
+//         navigator.geolocation.getCurrentPosition(function(position) {
+//           setLat(position.coords.latitude);
+//           setLon(position.coords.longitude);
+//         });
+//       }
+//     }
+//   }, [lat, lon])
+
+        // await fetch(`${process.env.REACT_APP_CITY_URL}?lat=${lat}&lon=${lon}&limit=1&appid=${process.env.REACT_APP_API_KEY}`)
+        //   .then(res=>res.json())
+        //   .then(result => {
+        //     setCity(result.name)
+        //     console.log(city)
+        //   })
+
+      // console.log("Latitude is: ", lat)
+      // console.log("Longitude is: ", lon)
+//       }
+//        fetch(`${process.env.REACT_APP_API_URL}?lat=${lat}&lon=${lon}&units=imperial&APPID=${process.env.REACT_APP_API_KEY}`)
+//         .then(res=>res.json())
+//         .then(result => {
+//           setForecast(result)
+//           console.log(result)
+//           console.log(`${process.env.REACT_APP_API_URL}?lat=${lat}&lon=${lon}$units=imperial&APPID=${process.env.REACT_API_KEY}`)
+//         })
+//       .catch((err) => {
+//         if (err.name === 'AbortError') {
+//           console.log('successfully aborted');
+//         } else {
+//           //handle error here
+//         }
+//       })
+//       return () => {
+//         controller.abort();
+//       }
+//       }
+    
+//     fetchData();
+    
+//   }, [lat, lon]);
+
+
+
+
+    {forecast ?
+    <div>
+        
+        {forecast.alerts ? <AlertAccordion alerts={forecast.alerts} /> : <></>}
+        {forecast 
+          ? <CurrentWeather currentData={forecast.current} hourlyData={forecast.hourly} low={forecast.daily[0].temp.min} hi={forecast.daily[0].temp.max}/>
+        : <h1>Loading...</h1>}
+        {/* <CurrentWeather currentData={forecast.current} hourlyData={forecast.hourly} low={forecast.daily[0].temp.min} hi={forecast.daily[0].temp.max}/> */}
+        {/* <RecipeReviewCard /> */}
+        {forecast ? <DailyWeather dailyData={forecast.daily} /> : <h1>Loading...</h1>}
+        <DailyWeather dailyData={forecast.daily} />
+        {/* <HourlyWeather hourlyData={forecast.hourly} max={forecast.daily[0].temp.max} min={forecast.daily[0].temp.min}/> */}
+    </div>
+    : <h1>Loading...</h1>
+}

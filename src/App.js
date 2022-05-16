@@ -144,7 +144,7 @@ function App() {
     }, [zip, country, location.lat, location.lon])
 
   console.log('this is location' + location)
-  console.log('this is latlon: ' + lat + lon)
+  //console.log('this is latlon: ' + lat + lon)
   console.log('this is city: ' + city)
   console.log('this is location lat' + location.lat)
   console.log('this is location lon' + location.lon)
@@ -176,41 +176,18 @@ function App() {
                     </MenuItem>
               ))}
         </TextField>
-        {/* <Button 
-          variant = "contained"
-          onClick={() => {
-            setZip(updateZip)
-            setCountry(updateCountry)
-          }}>
-              Submit
-        </Button> */}
-      </Box>
-      {forecast.current ?
-        <div>
         
-        {forecast.alerts ? <AlertAccordion alerts={forecast.alerts} /> : <></>}
-        {forecast 
-        ? <CurrentWeather currentData={forecast.current} hourlyData={forecast.hourly} low={forecast.daily[0].temp.min} hi={forecast.daily[0].temp.max}/>
-        : <h1>Loading...</h1>}
-        {/* <CurrentWeather currentData={forecast.current} hourlyData={forecast.hourly} low={forecast.daily[0].temp.min} hi={forecast.daily[0].temp.max}/> */}
-        {forecast ? <DailyWeather dailyData={forecast.daily} /> : <h1>Loading...</h1>}
-        {/* <HourlyWeather hourlyData={forecast.hourly} max={forecast.daily[0].temp.max} min={forecast.daily[0].temp.min}/> */}
+      </Box>
+      {forecast ?
+      <div>
+        <p>forecast is true</p>
+        
+        
       </div>
     : <h1>Loading...</h1>}
       
     </div>
   );
-    // } else {
-    //   return (
-    //     <div>
-    //   <h1>Loading...</h1>
-    //   <p>{location.lat}</p>
-    //   <p>{location.lon}</p>
-    //   <p>{zip}</p>
-    //   <p>{country}</p>
-    //   </div>
-    //   )
-    // }
 }
 
 export default App;

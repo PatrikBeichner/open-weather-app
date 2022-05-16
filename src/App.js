@@ -20,8 +20,8 @@ function App() {
   let reverseUrl = '/api/reverse?';
   let geoUrl = '/api/location?'
 
-  const [lat, setLat] = useState('40.4854');
-  const [lon, setLon] = useState('-79.9449');
+  const [lat, setLat] = useState();
+  const [lon, setLon] = useState();
   //const [city, setCity] = useState();
 
   const [country, setCountry] = useState('US')
@@ -31,8 +31,7 @@ function App() {
   //let lon = location.lon;
   let city = location.name;
 
-  let updateCountry = ''
-  let updateZip = ''
+  
 
   //const [forecast, setForecast] = useState([])
 
@@ -58,13 +57,13 @@ function App() {
   
 
   const handleCountry = (event) => {
-    updateCountry = event.target.value;
-    //setCountry(event.target.value)
+    //updateCountry = event.target.value;
+    setCountry(event.target.value)
     console.log('this is country: ' + country)
   }
   const handleZip = (event) => {
-    updateZip = event.target.value;
-    //setZip(event.target.value)
+    //updateZip = event.target.value;
+    setZip(event.target.value)
     console.log('this is zip: ' + zip)
   }
 
@@ -131,12 +130,12 @@ function App() {
         const loc = await fetch (`/api/location?zip=${zip}&country=${country}`)
         .then((res) => res.json())
         .then((res) => setLocation(res))
-        console.log(location)
+        //console.log(location)
 
         const wea = await fetch(`/api/weather?latitude=${location.lat}&longitude=${location.lon}`)
         .then((res) => res.json())
         .then((res) => setForecast(res))
-        console.log(forecast)
+        //console.log(forecast)
       } catch (e) {
         console.log(e)
       }
@@ -158,18 +157,18 @@ function App() {
           id='standard-basic'
           label='zip/post code'
           variant='standard'
-          placeholder={zip}
+          //placeholder={zip}
           value={zip}
-          // onChange={handleZip}
+          onChange={handleZip}
         />
         <TextField
           id='standard-select-country'
           variant='standard'
           select
           label='select country'
-          placeholder={country}
+          //placeholder={country}
           value={country}
-          // onChange={handleCountry}
+          onChange={handleCountry}
         >
             {COUNTRIES.map((country) => (
                   <MenuItem key={country.countryCode} value={country.alpha2}>
@@ -177,16 +176,27 @@ function App() {
                     </MenuItem>
               ))}
         </TextField>
-        <Button 
+        {/* <Button 
           variant = "contained"
           onClick={() => {
             setZip(updateZip)
             setCountry(updateCountry)
           }}>
               Submit
-        </Button>
+        </Button> */}
       </Box>
-      
+      {forecast.current ?
+        <div>
+        
+        {forecast.alerts ? <AlertAccordion alerts={forecast.alerts} /> : <></>}
+        {forecast 
+        ? <CurrentWeather currentData={forecast.current} hourlyData={forecast.hourly} low={forecast.daily[0].temp.min} hi={forecast.daily[0].temp.max}/>
+        : <h1>Loading...</h1>}
+        {/* <CurrentWeather currentData={forecast.current} hourlyData={forecast.hourly} low={forecast.daily[0].temp.min} hi={forecast.daily[0].temp.max}/> */}
+        {forecast ? <DailyWeather dailyData={forecast.daily} /> : <h1>Loading...</h1>}
+        {/* <HourlyWeather hourlyData={forecast.hourly} max={forecast.daily[0].temp.max} min={forecast.daily[0].temp.min}/> */}
+      </div>
+    : <h1>Loading...</h1>}
       
     </div>
   );

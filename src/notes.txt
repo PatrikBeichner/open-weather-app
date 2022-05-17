@@ -187,3 +187,56 @@ const [mode, setMode] = useState('light')
     </div>
     : <h1>Loading...</h1>
 }
+
+
+
+working fetch coords
+useEffect(() => {
+    const fetchCor = async () => {
+      try {
+        const loc = await fetch(`/api/location?zip=${zip}&country=${country}`)
+          .then((res) => res.json())
+          .then((data) => setLocation(data));
+        console.log('this is fetchCor');
+        console.log(loc.location.lat)
+        //console.log(location)
+
+        // const wea = await fetch(`/api/weather?latitude=${location.lat}&longitude=${location.lon}`)
+        // .then((res) => res.json())
+        // .then((res) => setForecast(res))
+        //console.log(forecast)
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetchCor();
+  }, [zip, country]);
+
+
+    useEffect(() => {
+    const fetchWea = async () => {
+      try {
+        const wea = await fetch(`/api/weather?latitude=${location.lat}&longitude=${location.lon}`)
+          .then((res) => res.json())
+          .then((res) => setForecast(res));
+          //console.log('this is fetchWea')
+          //console.log(forecast.daily[0].temp.min)
+          //console.log(forecast)
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetchWea();
+  }, [location]);
+
+
+  TEST
+  {forecast ? (
+        <div>
+          <p>forecast is true</p>
+          <p>{forecast.daily[0].temp.min}</p>
+          <p>{location.name}</p>
+        </div>
+      ) : (
+        <h1>Loading...</h1>
+      )}

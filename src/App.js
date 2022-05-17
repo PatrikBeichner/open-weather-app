@@ -2,7 +2,7 @@ import './App.css';
 import React, { useEffect, useState, useRef } from 'react';
 import CurrentWeather from './CurrentWeather';
 import { WEATHER } from './shared/weather';
-import { COUNTRIES } from './shared/countryCodes'
+import { COUNTRIES } from './shared/countryCodes';
 import DailyWeather from './DailyWeather';
 //import Alerts from './alert';
 //import AlertsDialog from './alertDialog';
@@ -11,27 +11,34 @@ import AlertAccordion from './alertAccordion';
 //import RecipeReviewCard from './recipeReviewCard';
 //import InputComponent from './inputComponent';
 //import { IconButton } from '@mui/material';
-import { TextField, Select, FormControl, MenuItem, InputLabel, Box, useTheme, ThemeProvider, createTheme, Button } from '@mui/material';
-
+import {
+  TextField,
+  Select,
+  FormControl,
+  MenuItem,
+  InputLabel,
+  Box,
+  useTheme,
+  ThemeProvider,
+  createTheme,
+  Button,
+} from '@mui/material';
 
 function App() {
-  
   let weatherUrl = '/api/weather?';
   let reverseUrl = '/api/reverse?';
-  let geoUrl = '/api/location?'
+  let geoUrl = '/api/location?';
 
-  const [lat, setLat] = useState();
-  const [lon, setLon] = useState();
+  //const [lat, setLat] = useState();
+  //const [lon, setLon] = useState();
   //const [city, setCity] = useState();
 
-  const [country, setCountry] = useState('US')
-  const [zip, setZip] = useState('15201')
-  const [location, setLocation] = useState({})
-  //let lat = location.lat;
-  //let lon = location.lon;
+  const [country, setCountry] = useState('US');
+  const [zip, setZip] = useState('15201');
+  const [location, setLocation] = useState({});
+  let lat = location.lat;
+  let lon = location.lon;
   let city = location.name;
-
-  
 
   //const [forecast, setForecast] = useState([])
 
@@ -39,13 +46,12 @@ function App() {
   //const [forecast, setForecast] = useState(WEATHER);
   const [forecast, setForecast] = useState();
 
-
   //const [errors, setErrors] = useState([]);
 
   //const apiKey = process.env.REACT_APP_API_KEY;
   //const apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=hourly&appid=${apiKey}`;
   //const apiGeoUrl = `http://api.openweathermap.org/geo/1.0/zip?zip=${zip},${country}&appid=${apiKey}`;
-  
+
   // async function fetchWeat() {
   //   if(location) {
   //     console.log('this is from the thing')
@@ -54,138 +60,172 @@ function App() {
   //     .then((data) => setForecast(data));
   //   }
   //   }
-  
 
   const handleCountry = (event) => {
     //updateCountry = event.target.value;
-    setCountry(event.target.value)
-    console.log('this is country: ' + country)
-  }
+    setCountry(event.target.value);
+    console.log('this is country: ' + country);
+  };
   const handleZip = (event) => {
     //updateZip = event.target.value;
-    setZip(event.target.value)
-    console.log('this is zip: ' + zip)
-  }
-
+    setZip(event.target.value);
+    console.log('this is zip: ' + zip);
+  };
 
   //This is the one you were working on
-//   useEffect(() => {
-//     //let newLat = '';
-//     //let newLon = '';
-//     const fetchCords = async () => {
-//       console.log(`/api/location?zip=${zip}&country=${country}`)
-//     await fetch(`/api/location?zip=${zip}&country=${country}`)
-//       .then((res) => res.json())
-//       .then((data) => {
-//          //newLat = data.latitude;
-//          //newLon = data.longitude;
-//         //setLocation(data)
-//       setLat(data.lat)
-//       setLon(data.lon)}
-//         );
-//         console.log(location)
+  //   useEffect(() => {
+  //     //let newLat = '';
+  //     //let newLon = '';
+  //     const fetchCords = async () => {
+  //       console.log(`/api/location?zip=${zip}&country=${country}`)
+  //     await fetch(`/api/location?zip=${zip}&country=${country}`)
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //          //newLat = data.latitude;
+  //          //newLon = data.longitude;
+  //         //setLocation(data)
+  //       setLat(data.lat)
+  //       setLon(data.lon)}
+  //         );
+  //         console.log(location)
 
-      
-//   } 
-//     const fetchWeather = async () => {
-//       console.log(`/api/weather?latitude=${location.lat}&longitude=${location.lon}`)
-//       await fetch(`/api/weather?latitude=${location.lat}&longitude=${location.lon}`)
-//       .then((res) => res.json())
-//       .then((data2) => setForecast(data2));
-//     }
-//   fetchCords()
-//   .catch(console.error);
+  //   }
+  //     const fetchWeather = async () => {
+  //       console.log(`/api/weather?latitude=${location.lat}&longitude=${location.lon}`)
+  //       await fetch(`/api/weather?latitude=${location.lat}&longitude=${location.lon}`)
+  //       .then((res) => res.json())
+  //       .then((data2) => setForecast(data2));
+  //     }
+  //   fetchCords()
+  //   .catch(console.error);
 
-//   if ( lat && lon ) {
-//   fetchWeather()
-//   .catch(console.error);
-//   }
-// },[zip, country, location, lat, lon])
+  //   if ( lat && lon ) {
+  //   fetchWeather()
+  //   .catch(console.error);
+  //   }
+  // },[zip, country, location, lat, lon])
 
-
-//   useEffect(() => {
-//     if (location) {
-//     const fetchWeather = async () => {
-//       await fetch(`/api/weather?latitude=${location.lat}&longitude=${location.lon}`, {
-//         headers : {
-//         'Content-Type': 'application/json',
-//         'Accept': 'application/json'
-//         }
-//       })
-//       .then(res=>res.json())
-//       .then(res=> {
-//         setForecast(res)
-//         //console.log(data)
-//       })
-//     }
-//   fetchWeather()
-//   .catch(console.error);
-// }
-//   }, [location])
-
+  //   useEffect(() => {
+  //     if (location) {
+  //     const fetchWeather = async () => {
+  //       await fetch(`/api/weather?latitude=${location.lat}&longitude=${location.lon}`, {
+  //         headers : {
+  //         'Content-Type': 'application/json',
+  //         'Accept': 'application/json'
+  //         }
+  //       })
+  //       .then(res=>res.json())
+  //       .then(res=> {
+  //         setForecast(res)
+  //         //console.log(data)
+  //       })
+  //     }
+  //   fetchWeather()
+  //   .catch(console.error);
+  // }
+  //   }, [location])
 
   useEffect(() => {
-    const fetchWea = async () => {
+    const fetchCor = async () => {
       try {
-        const loc = await fetch (`/api/location?zip=${zip}&country=${country}`)
-        .then((res) => res.json())
-        .then((res) => setLocation(res))
+        const loc = await fetch(`/api/location?zip=${zip}&country=${country}`)
+          .then((res) => res.json())
+          .then((data) => setLocation(data));
+        console.log('this is fetchCor');
+        //console.log(loc.location.lat)
         //console.log(location)
 
-        const wea = await fetch(`/api/weather?latitude=${location.lat}&longitude=${location.lon}`)
-        .then((res) => res.json())
-        .then((res) => setForecast(res))
+        // const wea = await fetch(`/api/weather?latitude=${location.lat}&longitude=${location.lon}`)
+        // .then((res) => res.json())
+        // .then((res) => setForecast(res))
         //console.log(forecast)
       } catch (e) {
-        console.log(e)
+        console.log(e);
       }
-    }
-      fetchWea();
-    }, [zip, country, location.lat, location.lon])
+    };
+    fetchCor();
+  }, [zip, country]);
 
-  console.log('this is location' + location)
+  const searchWeather = () => {
+    fetch(`/api/weather?latitude=${location.lat}&longitude=${location.lon}`)
+      .then((res) => res.json())
+      .then((result2) => setForecast(result2));
+  };
+
+  useEffect(() => {
+    // const fetchWea = async () => {
+    //   try {
+    //     const wea = await fetch(`/api/weather?latitude=${location.lat}&longitude=${location.lon}`)
+    //       .then((res) => res.json())
+    //       .then((res) => setForecast(res));
+    //       //console.log('this is fetchWea')
+    //       //console.log(forecast.daily[0].temp.min)
+    //       //console.log(forecast)
+    //   } catch (e) {
+    //     console.log(e);
+    //   }
+    // };
+    //fetchWea();
+    if (location.lat && location.lon) {
+      searchWeather();
+    }
+  }, [location]);
+
+  //console.log('this is location' + location);
   //console.log('this is latlon: ' + lat + lon)
-  console.log('this is city: ' + city)
-  console.log('this is location lat' + location.lat)
-  console.log('this is location lon' + location.lon)
-  
+  //console.log('this is city: ' + city);
+  //console.log('this is location lat' + location.lat);
+  //console.log('this is location lon' + location.lon);
+
   return (
     <div className="App">
-      
-      <Box component='form'>
+      <Box component="form">
         <TextField
-          id='standard-basic'
-          label='zip/post code'
-          variant='standard'
+          id="standard-basic"
+          label="zip/post code"
+          variant="standard"
           //placeholder={zip}
           value={zip}
           onChange={handleZip}
         />
         <TextField
-          id='standard-select-country'
-          variant='standard'
+          id="standard-select-country"
+          variant="standard"
           select
-          label='select country'
+          label="select country"
           //placeholder={country}
           value={country}
-          onChange={handleCountry}
-        >
-            {COUNTRIES.map((country) => (
-                  <MenuItem key={country.countryCode} value={country.alpha2}>
-                      {country.name}
-                    </MenuItem>
-              ))}
+          onChange={handleCountry}>
+          {COUNTRIES.map((country) => (
+            <MenuItem key={country.countryCode} value={country.alpha2}>
+              {country.name}
+            </MenuItem>
+          ))}
         </TextField>
-        
       </Box>
-      {forecast ?
-      <div>
-        <p>forecast is true</p>
-        
-        
-      </div>
-    : <h1>Loading...</h1>}
-      
+      {forecast ? (
+        <div>
+          {forecast.alerts ? <AlertAccordion alerts={forecast.alerts} /> : <></>}
+          <h1>{location.name}</h1>
+          {forecast ? (
+            <CurrentWeather
+              currentData={forecast.current}
+              hourlyData={forecast.hourly}
+              low={forecast.daily[0].temp.min}
+              hi={forecast.daily[0].temp.max}
+            />
+          ) : (
+            <h1>Loading...</h1>
+          )}
+          {/* <CurrentWeather currentData={forecast.current} hourlyData={forecast.hourly} low={forecast.daily[0].temp.min} hi={forecast.daily[0].temp.max}/> */}
+          {/* <RecipeReviewCard /> */}
+          {forecast ? <DailyWeather dailyData={forecast.daily} /> : <h1>Loading...</h1>}
+          {/* <DailyWeather dailyData={forecast.daily} /> */}
+          {/* <HourlyWeather hourlyData={forecast.hourly} max={forecast.daily[0].temp.max} min={forecast.daily[0].temp.min}/> */}
+        </div>
+      ) : (
+        <h1>Loading...</h1>
+      )}
     </div>
   );
 }

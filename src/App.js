@@ -8,9 +8,12 @@ import AlertAccordion from './alertAccordion';
 import { TextField, MenuItem, Box } from '@mui/material';
 
 function App() {
-  //let weatherUrl = '/api/weather?';
+  let weatherUrl = 'https://weath-backend.herokuapp.com/api/weather?';
+  // let weatherUrl = process.env.REACT_APP_API_WEA;
   //let reverseUrl = '/api/reverse?';
-  //let geoUrl = '/api/location?';
+  let geoUrl = 'https://weath-backend.herokuapp.com/api/location?';
+  // let geoUrl = process.env.REACT_APP_API_LOC;
+
 
   //set up state with initial values for first page load
   const [country, setCountry] = useState('US');
@@ -37,7 +40,7 @@ function App() {
   useEffect(() => {
     const fetchCor = async () => {
       try {
-        const loc = await fetch(`/api/location?zip=${zip}&country=${country}`)
+        const loc = await fetch(`${geoUrl}zip=${zip}&country=${country}`)
           .then((res) => res.json())
           .then((data) => setLocation(data));
         console.log('this is fetchCor');
@@ -52,7 +55,8 @@ function App() {
 
   //fetches weather data from server using info from fetch coords hook
   const searchWeather = () => {
-    fetch(`/api/weather?latitude=${location.lat}&longitude=${location.lon}`)
+    console.log(`${weatherUrl}latitude=${location.lat}&longitude=${location.lon}`)
+    fetch(`${weatherUrl}latitude=${location.lat}&longitude=${location.lon}`)
       .then((res) => res.json())
       .then((result2) => setForecast(result2));
     //console.log(forecast)

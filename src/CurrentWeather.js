@@ -146,7 +146,7 @@ export default function CurrentWeather({ currentData, hourlyData, low, hi }) {
                   <Typography variant="body2" color="text.secondary" >pressure: {currentData.pressure} mbar</Typography>
                 </CardContent>
               </CardContent>
-              <CardActions wrap={"nowrap"}>
+              <CardActions disableSpacing wrap={"nowrap"}>
                 <ExpandMore expand={expanded} onClick={handleExpandClick} aria-expanded={expanded} aria-label="show more">
                   <ExpandMoreIcon />
                 </ExpandMore>

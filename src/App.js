@@ -1,44 +1,29 @@
 import './App.css';
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import CurrentWeather from './CurrentWeather';
-import { WEATHER } from './shared/weather';
+//import { WEATHER } from './shared/weather';
 import { COUNTRIES } from './shared/countryCodes';
 import DailyWeather from './DailyWeather';
-//import Alerts from './alert';
-//import AlertsDialog from './alertDialog';
 import AlertAccordion from './alertAccordion';
-//import HourlyWeather from './hourlyWeather';
-//import RecipeReviewCard from './recipeReviewCard';
-//import InputComponent from './inputComponent';
-//import { IconButton } from '@mui/material';
-import {
-  TextField,
-  Select,
-  FormControl,
-  MenuItem,
-  InputLabel,
-  Box,
-  useTheme,
-  ThemeProvider,
-  createTheme,
-  Button,
-} from '@mui/material';
+import { TextField, MenuItem, Box } from '@mui/material';
 
 function App() {
   //let weatherUrl = '/api/weather?';
   //let reverseUrl = '/api/reverse?';
   //let geoUrl = '/api/location?';
 
-
+  //set up state with initial values for first page load
   const [country, setCountry] = useState('US');
   const [zip, setZip] = useState('15201');
+  
+  //state hooks for location and weather data
   const [location, setLocation] = useState({});
+  const [forecast, setForecast] = useState();
 
   //use local data during development
   //const [forecast, setForecast] = useState(WEATHER);
-  const [forecast, setForecast] = useState();
 
-
+  //event handlers for changes of zip and country
   const handleCountry = (event) => {
     setCountry(event.target.value);
     console.log('this is country: ' + country);
@@ -48,7 +33,7 @@ function App() {
     console.log('this is zip: ' + zip);
   };
 
-
+  //fetches latitude and longitude from server when zip or country changes
   useEffect(() => {
     const fetchCor = async () => {
       try {
@@ -58,8 +43,6 @@ function App() {
         console.log('this is fetchCor');
         //console.log(loc.location.lat)
         //console.log(location)
-
-        
       } catch (e) {
         console.log(e);
       }
@@ -67,15 +50,17 @@ function App() {
     fetchCor();
   }, [zip, country]);
 
+  //fetches weather data from server using info from fetch coords hook
   const searchWeather = () => {
     fetch(`/api/weather?latitude=${location.lat}&longitude=${location.lon}`)
       .then((res) => res.json())
       .then((result2) => setForecast(result2));
-      //console.log(forecast)
+    //console.log(forecast)
   };
 
+  //fetches weather data when location changes
   useEffect(() => {
-
+    //calls weather api only when latitude and longitude change
     if (location.lat && location.lon) {
       searchWeather();
     }
@@ -94,7 +79,6 @@ function App() {
           id="standard-basic"
           label="zip/post code"
           variant="standard"
-          //placeholder={zip}
           value={zip}
           onChange={handleZip}
         />
@@ -103,7 +87,6 @@ function App() {
           variant="standard"
           select
           label="select country"
-          //placeholder={country}
           value={country}
           onChange={handleCountry}>
           {COUNTRIES.map((country) => (
@@ -127,11 +110,8 @@ function App() {
           ) : (
             <h1>Loading...</h1>
           )}
-          {/* <CurrentWeather currentData={forecast.current} hourlyData={forecast.hourly} low={forecast.daily[0].temp.min} hi={forecast.daily[0].temp.max}/> */}
-          {/* <RecipeReviewCard /> */}
           {forecast ? <DailyWeather dailyData={forecast.daily} /> : <h1>Loading...</h1>}
-          {/* <DailyWeather dailyData={forecast.daily} /> */}
-          {/* <HourlyWeather hourlyData={forecast.hourly} max={forecast.daily[0].temp.max} min={forecast.daily[0].temp.min}/> */}
+          
         </div>
       ) : (
         <h1>Loading...</h1>

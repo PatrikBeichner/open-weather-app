@@ -4,11 +4,11 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import Button from '@mui/material/Button';
+//import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import { Paper } from '@mui/material';
+//import { Paper } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { IconButton } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
@@ -26,23 +26,23 @@ import {
   WeatherSunny,
   WeatherCloudy } from '@emotion-icons/fluentui-system-regular';
 
-  const CONDITIONS = {
-    Clouds: <WeatherCloudy />,
-    Clear: <WeatherSunny />,
-    Tornado: <WeatherFog />,
-    Squall: <WeatherFog />,
-    Ash: <WeatherFog />,
-    Dust: <WeatherFog />,
-    Sand: <WeatherFog />,
-    Fog: <WeatherFog />,
-    Haze: <WeatherFog />,
-    Smoke: <WeatherFog />,
-    Mist: <WeatherFog />,
-    Snow: <WeatherSnow />,
-    Rain: <WeatherRain />,
-    Drizzle: <WeatherDrizzle />,
-    Thunderstorm: <WeatherThunderstorm />,
-}
+//   const CONDITIONS = {
+//     Clouds: <WeatherCloudy />,
+//     Clear: <WeatherSunny />,
+//     Tornado: <WeatherFog />,
+//     Squall: <WeatherFog />,
+//     Ash: <WeatherFog />,
+//     Dust: <WeatherFog />,
+//     Sand: <WeatherFog />,
+//     Fog: <WeatherFog />,
+//     Haze: <WeatherFog />,
+//     Smoke: <WeatherFog />,
+//     Mist: <WeatherFog />,
+//     Snow: <WeatherSnow />,
+//     Rain: <WeatherRain />,
+//     Drizzle: <WeatherDrizzle />,
+//     Thunderstorm: <WeatherThunderstorm />,
+// }
 
 
 const ExpandMore = styled((props) => {
@@ -66,7 +66,7 @@ export default function CurrentWeather({ currentData, hourlyData, low, hi }) {
   // let fLike = Math.round(currentData.feels_like);
   
 
-  let conSearch = `${currentData.weather[0].main}`;
+  //let conSearch = `${currentData.weather[0].main}`;
   // let iconEle = CONDITIONS.filter(word => word.main.indexOf(conSearch) >= 0).map(ele => ele.icon);
   // let iconEle = [CONDITIONS.find(({ main }) => main === conSearch)]
 
@@ -155,7 +155,7 @@ export default function CurrentWeather({ currentData, hourlyData, low, hi }) {
               <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
                   <p>maybe that the memory leak</p>
-                  {/* <HourlyWeather hourlyData={hourlyData} /> */}
+                  <HourlyWeather hourlyData={hourlyData} />
                 </CardContent>
               </Collapse>
             </Card>

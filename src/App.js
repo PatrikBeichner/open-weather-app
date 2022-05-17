@@ -59,6 +59,7 @@ function App() {
     fetch(`${weatherUrl}latitude=${location.lat}&longitude=${location.lon}`)
       .then((res) => res.json())
       .then((result2) => setForecast(result2));
+      console.log('this is searchWeather');
     //console.log(forecast)
   };
 
@@ -66,6 +67,7 @@ function App() {
   useEffect(() => {
     //calls weather api only when latitude and longitude change
     if (location.lat && location.lon) {
+      console.log('this is useEffect');
       searchWeather();
     }
   }, [location]);

@@ -154,7 +154,8 @@ export default function CurrentWeather({ currentData, hourlyData, low, hi }) {
 
               <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                  <HourlyWeather hourlyData={hourlyData} />
+                  <p>maybe that the memory leak</p>
+                  {/* <HourlyWeather hourlyData={hourlyData} /> */}
                 </CardContent>
               </Collapse>
             </Card>

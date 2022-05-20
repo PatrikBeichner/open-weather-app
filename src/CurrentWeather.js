@@ -17,32 +17,15 @@ import { ArrowDropUp } from '@mui/icons-material';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { Collapse } from '@mui/material';
 import HourlyWeather from './hourlyWeather';
-import {
-  WeatherThunderstorm,
-  WeatherDrizzle,
-  WeatherRain,
-  WeatherSnow,
-  WeatherFog,
-  WeatherSunny,
-  WeatherCloudy } from '@emotion-icons/fluentui-system-regular';
+// import {
+//   WeatherThunderstorm,
+//   WeatherDrizzle,
+//   WeatherRain,
+//   WeatherSnow,
+//   WeatherFog,
+//   WeatherSunny,
+//   WeatherCloudy } from '@emotion-icons/fluentui-system-regular';
 
-//   const CONDITIONS = {
-//     Clouds: <WeatherCloudy />,
-//     Clear: <WeatherSunny />,
-//     Tornado: <WeatherFog />,
-//     Squall: <WeatherFog />,
-//     Ash: <WeatherFog />,
-//     Dust: <WeatherFog />,
-//     Sand: <WeatherFog />,
-//     Fog: <WeatherFog />,
-//     Haze: <WeatherFog />,
-//     Smoke: <WeatherFog />,
-//     Mist: <WeatherFog />,
-//     Snow: <WeatherSnow />,
-//     Rain: <WeatherRain />,
-//     Drizzle: <WeatherDrizzle />,
-//     Thunderstorm: <WeatherThunderstorm />,
-// }
 
 
 const ExpandMore = styled((props) => {
@@ -61,51 +44,24 @@ export default function CurrentWeather({ currentData, hourlyData, low, hi }) {
 
   const iconUrl = 'http://openweathermap.org/img/wn/';
   let icon = `${iconUrl}${currentData.weather[0].icon}@2x.png`;
-  // let currTemp = Math.round(currentData.temp);
-  // console.log(currTemp);
-  // let fLike = Math.round(currentData.feels_like);
-  
 
-  //let conSearch = `${currentData.weather[0].main}`;
-  // let iconEle = CONDITIONS.filter(word => word.main.indexOf(conSearch) >= 0).map(ele => ele.icon);
-  // let iconEle = [CONDITIONS.find(({ main }) => main === conSearch)]
-
-  // console.log(conSearch);
-  // console.log(iconEle);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   if (currentData) {
-    // let currTemp = Math.round(currentData.temp);
-    // console.log(currTemp);
-    // let fLike = Math.round(currentData.feels_like);
-    // let icon = `${iconUrl}${currentData.weather[0].icon}@2x.png`;
-
-    // let conSearch = `${currentData.weather[0].main}`;
-    // let iconEle = CONDITIONS.filter((word) => word.main.indexOf(conSearch) >= 0);
-    // console.log(conSearch);
-    // console.log(iconEle);
 
     return (
       <>
-        {/* <div>
-            <p>Current weather</p>
-            <p>{currTemp}&deg;F</p>
-            <p>{fLike}&deg;F</p>
-            <p>{currentData.humidity}&#37;</p>
-            <p>{currentData.weather[0].main}</p>
-            <img src={`${iconUrl}${currentData.weather[0].icon}@2x.png`} alt={currentData.weather[0].main}/>
-        </div> */}
+
         <Box display='center' sx={{m: 2}}>
                                   {/* sx={{ border: 1, borderColor: 'green'}} */}
         <Grid container justifyContent="center" alignItems="center" spacing={10} >
           <Grid item xs={10} lg={6} sx={{width: '100%'}}>
             <Card>
               <CardContent sx={{ display: 'flex', flexDirection: {xs: 'column', md: 'row'}, justifyContent: 'center' }}>
-                {/* <CardMedia component="img" height='140'image={icon} alt={currentData.weather[0].main} /> */}
-                {/* {CONDITIONS[conSearch]} */}
+
                 <CardMedia>
                   <img src={icon} alt={currentData.weather[0].main} />
                   <Typography gutterBottom variant="h5" component="div">

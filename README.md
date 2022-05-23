@@ -2,6 +2,8 @@
 
 A simple in design weather app showing you the weather info you need in a clear and concise package
 
+A live version with working backend can be found here https://oweath.herokuapp.com/
+
 ## Features
 
 - current weather with collapsible 12 hour temperature graph

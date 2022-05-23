@@ -80,7 +80,7 @@ function App() {
 
   return (
     <div className="App">
-      <Box component="form">
+      <Box component="form" sx={{backgroundColor: 'lightblue'}}>
         <TextField
           id="standard-basic"
           label="zip/post code"

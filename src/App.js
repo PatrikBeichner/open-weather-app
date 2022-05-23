@@ -29,11 +29,11 @@ function App() {
   //event handlers for changes of zip and country
   const handleCountry = (event) => {
     setCountry(event.target.value);
-    console.log('this is country: ' + country);
+    //console.log('this is country: ' + country);
   };
   const handleZip = (event) => {
     setZip(event.target.value);
-    console.log('this is zip: ' + zip);
+    //console.log('this is zip: ' + zip);
   };
 
   //fetches latitude and longitude from server when zip or country changes
@@ -43,7 +43,7 @@ function App() {
         const loc = await fetch(`${geoUrl}zip=${zip}&country=${country}`)
           .then((res) => res.json())
           .then((data) => setLocation(data));
-        console.log('this is fetchCor');
+        //console.log('this is fetchCor');
         //console.log(loc.location.lat)
         //console.log(location)
       } catch (e) {
@@ -59,7 +59,7 @@ function App() {
     fetch(`${weatherUrl}latitude=${location.lat}&longitude=${location.lon}`)
       .then((res) => res.json())
       .then((result2) => setForecast(result2));
-      console.log('this is searchWeather');
+      //console.log('this is searchWeather');
     //console.log(forecast)
   };
 
@@ -67,7 +67,7 @@ function App() {
   useEffect(() => {
     //calls weather api only when latitude and longitude change
     if (location.lat && location.lon) {
-      console.log('this is useEffect');
+      //console.log('this is useEffect');
       searchWeather();
     }
   }, [location]);
